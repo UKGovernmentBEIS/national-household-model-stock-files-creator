@@ -1,0 +1,17 @@
+* Stories
+** DONE There are 494 case where Finlopos and dwtype8x is NA, need another way to determine built form for thes, pnex might be better
+Look at dodgy join in save files, interview has 494 less than it should and might be causing the NA's
+** Once the above sorted compare stories again as these are different to Tobies count
+** DONE 38 STORIES have no dimension data being set -  Probable Bug
+*** Fill in NA values for dimensions before total storey area calc
+This causes a problem later on when re-scaling floor areas - will all be set to null
+** Confirm with Toby what var to use for location of flat in block, i.e Need to know if it's TOP FLOOR
+we know, how many flats in block, type of flat i.e. highrise and first level of a individual flat
+
+** Copy and paste job to add in other floor plan polygons
+
+* Elevations
+** Not Started
+
+* Cases
+

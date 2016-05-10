@@ -1,0 +1,13 @@
+* Stock creation for Wales
+This works by reweighting an English stock
+
+Run [[file:main.R][main.R]] to produce the stock.
+
+Run [[file:histograms.R][histograms.R]] to produce a comparison of how well it works.
+
+Modify [[file:constants.R][constants.R]] to change where the inputs come from and where the outputs go.
+
+** Inputs
+ 1. An English stock, which we will reweight.
+ 2. A table of desired weights for combinations of Welsh variables. The columns to the left of the table will be matched perfectly, the latter columns will get progressively worse.
+
