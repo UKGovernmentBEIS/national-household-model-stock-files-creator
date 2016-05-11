@@ -19,8 +19,8 @@ There are three separate data sets associated with the English Housing Survey: t
 ## Living in Wales Survey
 The housing survey conducted in Wales is also split into a household survey and a physical survey and can be found on the UK Data Archive:
 
-* [2008 Living in Wales: Property Survey page](ttp://discover.ukdataservice.ac.uk/catalogue/?sn=7202&type=Data%20catalogue)
-* [2008 Living in Wales: Household Survey page](ttp://discover.ukdataservice.ac.uk/catalogue/?sn=6351&type=Data%20catalogue)
+* [2008 Living in Wales: Property Survey page](http://discover.ukdataservice.ac.uk/catalogue/?sn=7202&type=Data%20catalogue)
+* [2008 Living in Wales: Household Survey page](http://discover.ukdataservice.ac.uk/catalogue/?sn=6351&type=Data%20catalogue)
 
 This is currently the most up to date housing survey for Wales. However, future surveys are being planned.
 
