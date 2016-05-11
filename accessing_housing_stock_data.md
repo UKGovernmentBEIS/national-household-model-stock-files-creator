@@ -12,9 +12,9 @@ Registering for access through the UK data archive can be done here:
 ## England Housing Survey
 There are three separate data sets associated with the English Housing Survey: the physical survey, the household survey and the derived fuel poverty datasets. These can be found on the following web pages on the UK Data Service website: 
 
-* [English Housing Survey, 2013: Housing Stock Data (SN 7802)](http://discover.ukdataservice.ac.uk/catalogue?sn=7802)
-* [English Housing Survey, 2013-2014: Household Data (SN 7801)](http://discover.ukdataservice.ac.uk/Catalogue/?sn=7801)
-* [English Housing Survey: Fuel Poverty Dataset, 2013 (SN 7833)](https://discover.ukdataservice.ac.uk/catalogue/?sn=7833)
+* [English Housing Survey, 2012: Housing Stock Data (SN 7511)](http://discover.ukdataservice.ac.uk/catalogue?sn=7511)
+* [English Housing Survey, 2012-2013: Household Data (SN 7512)](http://discover.ukdataservice.ac.uk/Catalogue/?sn=7512)
+* [English Housing Survey: Fuel Poverty Dataset, 2012 (SN 7539)](https://discover.ukdataservice.ac.uk/catalogue/?sn=7539)
 
 ## Living in Wales Survey
 The housing survey conducted in Wales is also split into a household survey and a physical survey and can be found on the UK Data Archive:
