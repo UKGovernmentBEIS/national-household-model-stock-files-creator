@@ -8,6 +8,13 @@ The scripts for creating the stock files have been written in [R](https://cran.r
 
 [Installation for Windows](windows_installation.md)
 
+# Running the script
+1. Ensure you have downloaded the required source survey files as previously mentioned.
+2. Start the R command line application or R studio
+3. Switch your workspace to the location you have downloaded this repository too
+4. Execute the stock creation scripts by entering 'source("main.R")'.
+5. Check the console for the status of the import, if succesful and output dirtory should be created your workspace directory, this should include sub directories for scotland, england and wales and uk. Each of these sub-directories should include the structured csv files and a zip file which can be imported into the NHM standalone as a stock.
+
 # External Project Dependencies
 We cannot distributre the source data files for the Housing Condition survey files the R scripts build the stock files, you will need to obtain these from the the following locations.
 
