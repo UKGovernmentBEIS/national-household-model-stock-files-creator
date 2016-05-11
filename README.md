@@ -6,7 +6,7 @@ TODO - Some blurb about the source files
 # Installation
 The scripts for creating the stock files have been written in [R](https://cran.r-project.org/), which will need to be downloaded and installed.
 
-To ensure the scripts run correctly and build consisten stock files we recommend you ensure you have the necessary R pacakges installed at the required versions, to make this easier we have created an R script which should install these dependencies for you (install-dependencies.R)(http://tbd). This can be run from within your R environment. 
+[Installation for Windows](windows_installation.md)
 
 # External Project Dependencies
 We cannot distributre the source data files for the Housing Condition survey files the R scripts build the stock files, you will need to obtain these from the the following locations.
