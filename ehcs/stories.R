@@ -468,6 +468,7 @@ generate.all.storeys <- function(base.directory, output.file, scale) {
                        reencode='utf-8')
         colnames(r) <- tolower(colnames(r))
         r$caseno <- NULL
+        r$aacode <- trimws(as.character(r$aacode))
         r
     }
 
@@ -475,8 +476,8 @@ generate.all.storeys <- function(base.directory, output.file, scale) {
 
     big.data <- Reduce(join.aacode,
                        list(
-                           read.input("derived/dimensions.sav"),
-                           read.input("derived/physical.sav"),
+                           read.input("derived/detailed/dimensions_11plus12.sav"),
+                           read.input("derived/physical_11plus12.sav"),
                            read.input("physical/shape.sav"),
                            read.input("physical/flatdets.sav"),
                            read.input("physical/interior.sav"),

@@ -19,7 +19,6 @@ library(ggplot2) #Required to create plots
 library(grid) #Required to create plots
 library(splancs) # required for areapl function
 library(utils) # for zip
-
 #' ## Controllable settings
 #' EHS space heating lookup tables to use, in preference order
 #' You can comment these out if you don't want them.
@@ -38,6 +37,9 @@ option.ehs.spaceheating.lookups <- c(
                                         # final fallback - best to leave this!
     "space-heating-missing-data-lup.csv"
 )
+
+#' Whether to build the scotland stock
+option.scotland.build <- FALSE
 
 #' Whether to use the sedbuk lookup device
 option.ehs.spaceheating.sedbuk <- TRUE
@@ -96,27 +98,30 @@ outputs <- file.path(getwd(), "outputs")
 #' run the scotland code in a separate env (so we don't replace any important stuff)
 #+ warning = FALSE, message = FALSE, comment = NA
 scotland.outputs <- file.path(outputs, "scotland")
-erase.dto.files(scotland.outputs)
+print(paste("Skipping Scotland=", !option.scotland.build))
+if(option.scotland.build){
+    erase.dto.files(scotland.outputs)
 
-# Create output folder if does not exist
-if (file_test("-d",scotland.outputs) == FALSE){
-  dir.create(scotland.outputs, recursive=T)
+                                        # Create output folder if does not exist
+    if (file_test("-d",scotland.outputs) == FALSE){
+        dir.create(scotland.outputs, recursive=T)
+    }
+    scotland <- new.env()
+    scotland.survey <- file.path(getwd(), "data/SHCS_11-13/external_cse_data.sav")
+    sys.source("scotland/main.R", envir=scotland, chdir=T)
+    with(scotland,
+         make.scotland(scotland.survey, scotland.outputs))
+
+    make.zip.file(scotland.outputs, "scotland-shcs-11-13")
+
+    scotland.tests <- new.env()
+    rmarkdown::render("scotland/scotland-test-results.R", "pdf_document", envir = scotland.tests
+                     ,output_dir = file.path(dirname(getwd()),"Reports"))
+
+    scotland.stockreport <- new.env()
+    rmarkdown::render("scotland/main.R", "pdf_document", envir = scotland.stockreport
+                     ,output_file = "Scotland-stock-creation-code.pdf")
 }
-scotland <- new.env()
-scotland.survey <- file.path(getwd(), "data/SHCS_11-13/external_cse_data.sav")
-sys.source("scotland/main.R", envir=scotland, chdir=T)
-with(scotland,
-     make.scotland(scotland.survey, scotland.outputs))
-
-make.zip.file(scotland.outputs, "scotland-shcs-11-13")
-
-scotland.tests <- new.env()
-rmarkdown::render("scotland/scotland-test-results.R", "pdf_document", envir = scotland.tests
-                  ,output_dir = file.path(dirname(getwd()),"Reports"))
-
-scotland.stockreport <- new.env()
-rmarkdown::render("scotland/main.R", "pdf_document", envir = scotland.stockreport
-                  ,output_file = "Scotland-stock-creation-code.pdf")
 
 ##  E N G L A N D ##
 

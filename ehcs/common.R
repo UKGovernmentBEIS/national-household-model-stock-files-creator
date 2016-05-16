@@ -70,3 +70,27 @@ is.a.house <-function(dwellingType){
       "detached house" = TRUE,
       "small terraced house" = TRUE,
       "bungalow" = TRUE)))}
+
+#' Reads in spss files, converts aaacode colum to characters removing leading and trailing white space characters. Added because some sav files have padding in aacode field
+#'
+#' @param file.to.read - Location of file to read in as string
+read.spss.with.aacode <- function(file.to.read){
+    r <- read.spss(file.path(file.to.read),
+                       to.data.frame=TRUE,
+                       reencode='utf-8')
+    r$caseno <- NULL
+    r$aacode <- trimws(as.character(r$aacode))
+    r
+}
+                           
+
+   #' Reads in spss files, converts aaacode colum to characters removing leading and trailing white space characters. Added because some sav files have padding in aacode field
+#'
+#' @param file.to.read - Location of file to read in as string
+read.spss.with.aacode.ucase <- function(file.to.read){
+   result <- read.spss(file.path(file.to.read), to.data.frame = TRUE, reencode='utf-8')
+   result$Aacode <- trimws(as.character(result$Aacode))
+   return(result)
+}
+
+   
