@@ -78,14 +78,13 @@ roof.covering.type.lookup <- function(typercov){
   as.factor(checked.revalue(
     typercov,c(
       "mixed types" = "Tile",
-      "natural slate/stone/shingle" = "Slates",
+      "natural slate/stone/shingle/thatch" = "Slates",
       "man made slate" = "Slates",
       "clay tile" = "Tile",
       "concrete tile" = "Tile",
       "asphalt" = "Asphalt",
       "felt" = "Felt",
-      "glass/metal/laminate" = "Metal",
-      "thatch" = "Thatch"
+      "glass/metal/laminate" = "Metal"
     )))
 }
 
