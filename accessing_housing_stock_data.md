@@ -1,7 +1,7 @@
 # Accessing Housing Stock Data
 The NHM stock conversion programmes use housing condition surveys from England, Wales and Scotland. The most recently available versions of the surveys are:
 
-* English Housing Survey 2013 (EHS 2013)
+* English Housing Survey 2013 (EHS 2012)
 * Living in Wales Survey 2008 (LiW 2008)
 * Scottish Housing Condition Survey 2007-09 (SHCS 2011-13)
 
