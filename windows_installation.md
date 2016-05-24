@@ -13,7 +13,7 @@ The current stock creator R scripts require a number of packages that do not com
 
 1. Start up R studio
 2. Set your working directory to the location you have downloaded this repository e.g. setwd("C:/national-household-model-stock-files-creator")
-3. Run the install dependencies script by typing source("install"), you should see details of installation in the console window, this may take a while to complete, typically 3-5mins depending on your internet connection
+3. Run the install dependencies script by typing source("install-dependencies.R"), you should see details of installation in the console window, this may take a while to complete, typically 5-10mins depending on your internet connection
 4. If no errors occured above you can proceed to the next section
 
 
