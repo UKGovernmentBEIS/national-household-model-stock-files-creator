@@ -39,7 +39,10 @@ option.ehs.spaceheating.lookups <- c(
 )
 
 #' Whether to build the scotland stock
-option.scotland.build <- FALSE
+option.scotland.build <- TRUE
+
+#' Whether to build the english stock
+option.england.build <- TRUE
 
 #' Whether to use the sedbuk lookup device
 option.ehs.spaceheating.sedbuk <- TRUE
@@ -127,28 +130,29 @@ if(option.scotland.build){
 
 #' Create English Stock
 england.outputs <- file.path(outputs, "england")
-erase.dto.files(england.outputs)
+print(paste("Skipping England=", !option.england.build))
+if(option.england.build){
+    erase.dto.files(england.outputs)
+                                        # Create output folder if does not exist
+    if (file_test("-d",england.outputs) == FALSE){
+        dir.create(england.outputs, recursive=T)
+    }
+    england <- new.env()
+    path.to.ehcs <- file.path(getwd(), "data/EHS_2012")
+    sys.source("ehcs/main.R", envir=england, chdir=T)
+    with(england, 
+         make.stock(path.to.ehcs, england.outputs))
 
-# Create output folder if does not exist
-if (file_test("-d",england.outputs) == FALSE){
-  dir.create(england.outputs, recursive=T)
+    make.zip.file(england.outputs, "england-ehcs-2012")
+
+    england.tests <- new.env()
+    rmarkdown::render("ehcs/england-test-results.R", "pdf_document", envir = england.tests
+                     ,output_dir = file.path(dirname(getwd()),"Reports"))
+
+    england.stockreport <- new.env()
+    rmarkdown::render("ehcs/main.R", "pdf_document", envir = england.stockreport
+                     ,output_file = "England_stock_creation_code.pdf")
 }
-england <- new.env()
-path.to.ehcs <- file.path(getwd(), "data/EHS_2012")
-sys.source("ehcs/main.R", envir=england, chdir=T)
-with(england, 
-     make.stock(path.to.ehcs, england.outputs))
-
-make.zip.file(england.outputs, "england-ehcs-2012")
-
-england.tests <- new.env()
-rmarkdown::render("ehcs/england-test-results.R", "pdf_document", envir = england.tests
-                  ,output_dir = file.path(dirname(getwd()),"Reports"))
-
-england.stockreport <- new.env()
-rmarkdown::render("ehcs/main.R", "pdf_document", envir = england.stockreport
-                  ,output_file = "England_stock_creation_code.pdf")
-
 
 ##  W A L E S ##
 
