@@ -57,7 +57,6 @@ make.additionalproperties <- function(allEntries) {
                                     imd1010 = allEntries$Imd1010,
                                     wallinsx = allEntries$wallinsx,
                                     Felroofp = allEntries$felroofp,
-                                    AWEligible = allEntries$AWEligible,
                                     CERTpriority = allEntries$CERTpriority,
                                     WFG_preApr11 = allEntries$WFG_preApr11,
                                     sap09 = allEntries$sap09

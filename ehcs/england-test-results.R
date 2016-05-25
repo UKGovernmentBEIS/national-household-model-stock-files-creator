@@ -179,24 +179,6 @@ knitr::kable(test.children(ehs, cases))
 #+ eval=TRUE, echo=FALSE
 knitr::kable(test.income(ehs, occupants))
 
-#'
-#' \pagebreak
-#'  
-#' ##Lighting
-#' 
-#' Tests on lighting variables
-#' 
-#' ###Low energy lightbulbs
-#' Not currently possible to do a direct mapping with original EHS data. The test 
-#' would use the exact same logic as the stock processing code so would not be a test
-#'  as such. For the SHCS this was a more straightforward test. Test not included.
-#' 
-#+ eval=TRUE, echo=FALSE
-# knitr::kable(test.lighting(ehs, lighting))
-#'
-#'
-#' \pagebreak
-#'  
 #' ##Roofs
 #' 
 #' Tests on roofs variables

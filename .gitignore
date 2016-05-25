@@ -1,0 +1,4 @@
+**/*.sav
+**/**/r_sedbuk.csv
+**/outputs/
+**/*.pdf

@@ -76,7 +76,7 @@ make.stock <- function(path.to.ehcs, path.to.output) {
   IStockImportMetadataDTO <- make.eng_IStockImportMetadataDTO(allEntries)
   metadata <- make.eng_metadata(allEntries)
 
-  print("4")
+  print("All DTO data-frame constructed, saving to CSV files...")
   
   #' Output DTO's
   save.dto(casesDTO, file.path(path.to.output, "cases.csv"))
@@ -88,7 +88,7 @@ make.stock <- function(path.to.ehcs, path.to.output) {
   save.dto(waterHeatingDTO, file.path(path.to.output, "water-heating.csv"))
   save.dto(ventilationDTO, file.path(path.to.output, "ventilation.csv"))
 
-  print("4a")
+  print("Core DTO's saved, saving additional properties and logs to csv...")
   
   save.dto(additionalpropertiesDTO, file.path(path.to.output, 
                                               "additional-properties.csv"))
@@ -97,7 +97,7 @@ make.stock <- function(path.to.ehcs, path.to.output) {
                             file.path(path.to.output, "IStockImportMetadataDTO.csv"))
   save.eng_metadata(metadata, file.path(path.to.output, "metadata.csv"))
 
-  print("4b")
+  print("Addtional properties and logs csv created, making house storeys...")
   
   #' Just do stories on their own as they have a separate bit of code.
   scale.storeys <- if (exists("option.ehs.storeys.scale")) option.ehs.storeys.scale
@@ -105,7 +105,7 @@ make.stock <- function(path.to.ehcs, path.to.output) {
 
   generate.all.storeys(path.to.ehcs, file.path(path.to.output, "storeys.csv"), scale.storeys)
 
-  print("5")
+  print("House storeys created and saved to csv.")
 }
 
 merge.all.sav.files <- function(path.to.ehcs){
@@ -127,14 +127,14 @@ merge.all.sav.files <- function(path.to.ehcs){
        "derived/interview_11plus12.sav",
        "interview/rooms.sav", 
        "physical/elevate.sav", 
-       "fuel poverty/Fuel Poverty Dataset 2012.sav",
-       "fuel poverty/Fuel poverty dataset 2012 - Supplementary variables.sav")))
+       "fuel_poverty/fuel_poverty_dataset_2012_tc.sav",
+       "fuel_poverty/fuel_poverty_dataset_2012_supplementary_variables_tc.sav")))
   
   merged <- join(allEntries, 
                  toMerge,
                  by = "aacode")
 
-  print("1")
+  print("First pass merge of sav files into wide data-frame completed, adding dimensions_11plus12.sav...")
   #' Dimensions sav file uses different case for Aacode column so we need to-do a 
   #' different merge   
   allEntries <- merge(merged, 
@@ -142,16 +142,8 @@ merge.all.sav.files <- function(path.to.ehcs){
                      all.x = TRUE,
                      by.x = "aacode", by.y = "Aacode")
 
-  print("2")
-  
-  #' supplementary data on AW flag provided by DECC via BRE. data is in csv format so
-  #' different merge 
-  allEntries <- merge(allEntries, 
-                     read.csv(file.path(path.to.ehcs, "fuel poverty/2012-aw-flag.csv")),
-                     all.x = TRUE,
-                     by = "aacode")
-  print("3")
-  
+  print("Dimensions sav file merdged adding rooms summary from introoms.sav...")
+   
   # Create room summary and merge with allEntries data.frame
   introoms <- read.spss.with.aacode(file.path(path.to.ehcs, "physical/introoms.sav"))
   case.room.summary <- summarise.rooms(introoms)
