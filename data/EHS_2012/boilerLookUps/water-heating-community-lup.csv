@@ -1,0 +1,3 @@
+watersys,Finwhlty,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,winterefficiency,summerefficiency,waterheatingsystemtype,fluetype,mainheatingfuel
+instantaneous,CHP/Waste,Community boilers,,80,,,306,rd,0,80,80,80,community,,mains_gas
+instantaneous,From boiler,Community CHP,,75,,,307,rd,0,75,75,75,community_chp,,mains_gas

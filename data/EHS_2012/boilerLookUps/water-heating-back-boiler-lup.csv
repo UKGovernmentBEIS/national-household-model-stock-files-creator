@@ -1,0 +1,9 @@
+watersys,Finwhxty,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,winterefficiency,summerefficiency,waterheatingsystemtype,fluetype,mainheatingfuel
+dedicated boiler,Mains gas,HOT WATER SYSTEMS: Gas boiler/circulator for water heating only,,65,,,911,,0,65,65,65,back_boiler,,mains_gas
+dedicated boiler,Bulk LPG,HOT WATER SYSTEMS: Gas boiler/circulator for water heating only,,65,,,911,,0,65,65,65,back_boiler,,bulk_lpg
+dedicated boiler,Bottled gas,HOT WATER SYSTEMS: Gas boiler/circulator for water heating only,,65,,,911,,0,65,65,65,back_boiler,,bottled_lpg
+dedicated boiler,Oil,HOT WATER SYSTEMS: Oil boiler/circulator for water heating only,,70,,,912,,0,70,70,70,back_boiler,,oil
+dedicated boiler,Coal,HOT WATER SYSTEMS: Solid fuel boiler/circulator for water heating only,,55,,,913,,0,55,55,55,back_boiler,,house_coal
+dedicated boiler,Smokeless,HOT WATER SYSTEMS: Solid fuel boiler/circulator for water heating only,,55,,,913,,0,55,55,55,back_boiler,,house_coal
+dedicated boiler,Anthracite,HOT WATER SYSTEMS: Solid fuel boiler/circulator for water heating only,,55,,,913,,0,55,55,55,back_boiler,,house_coal
+dedicated boiler,Wood,HOT WATER SYSTEMS: Solid fuel boiler/circulator for water heating only,,55,,,913,,0,55,55,55,back_boiler,,biomass_pellets
