@@ -86,7 +86,6 @@ make.additionalproperties <- function(shcs) {
             imd1010 = NA,
             wallinsx = shcs.wallinsx,
             Felroofp = NA,
-            AWEligible = "MISSING",
             CERTpriority = NA,
             WFG_preApr11 = NA,
             sap09 = shcs$SAP2009_BRE)

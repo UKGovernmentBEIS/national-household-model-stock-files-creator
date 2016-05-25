@@ -1,0 +1,6 @@
+M2,M16,Heating System Type,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,spaceheatingsystemtype,storageheatertype,mainheatingfuel,fluetype,iscondensing
+Storage heating,Old Style,Storage heaters,ELECTRIC STORAGE SYSTEMS Off-peak tariffs: Old (large volume) storage heaters,,100,5,0,401,rd,0,100,storage_heater,oldlargevolume,electricity,notapplicable,FALSE
+Storage heating,New style,Storage heaters,ELECTRIC STORAGE SYSTEMS Off-peak tariffs: Modern (slimline) storage heaters,,100,4,0.25,402,rd,0,100,storage_heater,slimline,electricity,notapplicable,FALSE
+Storage heating,Fan Assisted,Storage heaters,ELECTRIC STORAGE SYSTEMS Off-peak tariffs: Fan storage heaters,,100,3,0.5,404,rd,0,100,storage_heater,fan,electricity,notapplicable,FALSE
+Storage heating,Integrated storage / direct,Storage heaters,ELECTRIC STORAGE SYSTEMS Off-peak tariffs: Integrated storage+direct-acting heater,,100,2,0.75,408,rd,0,100,storage_heater,integrateddirectacting,electricity,notapplicable,FALSE
+Storage heating,Under Floor,Storage heaters,ELECTRIC UNDERFLOOR HEATING Off-peak tariffs: In concrete slab (off-peak only),,100,5,0,421,rd,0,100,storage_heater,oldlargevolume,electricity,notapplicable,FALSE

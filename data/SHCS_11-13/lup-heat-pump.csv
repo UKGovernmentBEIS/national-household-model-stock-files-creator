@@ -1,0 +1,17 @@
+M2,M5,M11,Heating System Type,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,spaceheatingsystemtype,fluetype,mainheatingfuel,iscondensing
+Heat pump,Peak electric,Ground to water,Heat pump,Ground-to-water heat pump (electric),,320,1,1,201,rd,0,320,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Peak electric,"Ground to water, aux heater",Heat pump,Ground-to-water heat pump with auxiliary heater (electric),,300,1,1,202,rd,0,300,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Peak electric,Water to water,Heat pump,Water-to-water heat pump (electric),,300,1,1,203,rd,0,300,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Peak electric,Air to water,Heat pump,Air-to-water heat pump (electric),,250,1,1,204,rd,0,250,air_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Peak electric,Ground to air,Heat pump,"Gas-fired, ground source",,120,1,1,205,,0,120,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Peak electric,"Ground to air, aux heater",Heat pump,"Gas-fired, water source",,120,1,1,206,,0,120,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Peak electric,Water to air,Warm air system,Water-to-air heat pump (electric),,300,1,1,523,rd,0,300,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Peak electric,Air to air,Warm air system,Air-to-air heat pump (electric),,250,1,1,524,rd,0,250,air_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Off-peak electric,Ground to water,Heat pump,Ground-to-water heat pump (electric),,320,1,1,201,rd,0,320,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Off-peak electric,"Ground to water, aux heater",Heat pump,Ground-to-water heat pump with auxiliary heater (electric),,300,1,1,202,rd,0,300,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Off-peak electric,Water to water,Heat pump,Water-to-water heat pump (electric),,300,1,1,203,rd,0,300,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Off-peak electric,Air to water,Heat pump,Air-to-water heat pump (electric),,250,1,1,204,rd,0,250,air_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Off-peak electric,Ground to air,Heat pump,"Gas-fired, ground source",,120,1,1,205,,0,120,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Off-peak electric,"Ground to air, aux heater",Heat pump,"Gas-fired, water source",,120,1,1,206,,0,120,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Off-peak electric,Water to air,Warm air system,Water-to-air heat pump (electric),,300,1,1,523,rd,0,300,ground_source_heat_pump,notapplicable,electricity,FALSE
+Heat pump,Off-peak electric,Air to air,Warm air system,Air-to-air heat pump (electric),,250,1,1,524,rd,0,250,air_source_heat_pump,notapplicable,electricity,FALSE
