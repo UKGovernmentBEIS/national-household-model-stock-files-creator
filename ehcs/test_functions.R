@@ -323,7 +323,7 @@ test.income <- function(ehs, occupants) {
   test.xtab(
     ehs,
     occupants,
-    cut(ehs$fpfullinc, seq(from = -10000, to = 1000000, by = 5000), dig.lab = 6),
+    cut(as.numeric(ehs$fpfullinc), seq(from = -10000, to = 1000000, by = 5000), dig.lab = 6),
     cut(occupants$householdincomebeforetax, seq(from = -10000, to = 1000000, by = 5000), dig.lab = 6))
 }
 
