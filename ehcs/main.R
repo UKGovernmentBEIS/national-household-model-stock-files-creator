@@ -142,7 +142,7 @@ merge.all.sav.files <- function(path.to.ehcs){
                      all.x = TRUE,
                      by.x = "aacode", by.y = "Aacode")
 
-  print("Dimensions sav file merdged adding rooms summary from introoms.sav...")
+  print("Dimensions sav file merged adding rooms summary from introoms.sav...")
    
   # Create room summary and merge with allEntries data.frame
   introoms <- read.spss.with.aacode(file.path(path.to.ehcs, "physical/introoms.sav"))

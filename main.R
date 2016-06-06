@@ -23,7 +23,7 @@ library(utils) # for zip
 #' EHS space heating lookup tables to use, in preference order
 #' You can comment these out if you don't want them.
 option.ehs.spaceheating.lookups <- c(
-                                        # from SAP:
+    #from SAP:
     "lup-boiler-4b.csv",
     "electric-boiler-lup.csv",
     "gas-room-heater-lup.csv",
@@ -32,17 +32,20 @@ option.ehs.spaceheating.lookups <- c(
     "solid-fuel-boiler-lups.csv",
     "storage-heater-lup.csv",
     "warm-air-lup.csv",
-                                        # from the CAR methodology
+    # from the CAR methodology
     "Finchbcd-lup.csv",
-                                        # final fallback - best to leave this!
+    # final fallback - best to leave this!
     "space-heating-missing-data-lup.csv"
 )
 
-#' Whether to build the scotland stock
+#' Whether to build the scotland stock - if false UK stock is not built
 option.scotland.build <- TRUE
 
-#' Whether to build the english stock
+#' Whether to build the english stock - if false UK stock is not built
 option.england.build <- TRUE
+
+#' Whether to build the welsh stock - if false UK stock is not built
+option.wales.build <- TRUEq
 
 #' Whether to use the sedbuk lookup device
 option.ehs.spaceheating.sedbuk <- TRUE
@@ -155,36 +158,43 @@ if(option.england.build){
 }
 
 ##  W A L E S ##
-
 wales.outputs <- file.path(outputs, "wales")
-erase.dto.files(wales.outputs)
+if(option.wales.build){
+    erase.dto.files(wales.outputs)
 
-# Create output folder if does not exist
-if (file_test("-d",wales.outputs) == FALSE){
-  dir.create(wales.outputs, recursive=T)
-}
-wales <- new.env()
-path.to.wales <- file.path(getwd(), "data/LiW-2008")
-sys.source("wales/main.R", envir = wales, chdir = T)
-with(wales, 
+    # Create output folder if does not exist
+    if (file_test("-d",wales.outputs) == FALSE){
+        dir.create(wales.outputs, recursive=T)
+    }
+
+    wales <- new.env()
+    path.to.wales <- file.path(getwd(), "data/LiW-2008")
+    sys.source("wales/main.R", envir = wales, chdir = T)
+    with(wales, 
      make.wales(path.to.wales, wales.outputs))
-
-make.zip.file(wales.outputs, "wales-ehcs-2012")
-print("Wales stock zip created")
+    make.zip.file(wales.outputs, "wales-ehcs-2012")
+    print("Wales stock zip created")
+}
 
 ## COMBINED ALL STOCK AND CREATE A UK STOCK (WAITING FOR NORTHERN IRELAND) ##
+can.make.uk <- option.scotland.build & option.england.build & option.wales.build
+print(paste("Skipping Full UK Stock=", !can.make.uk))
+if(can.make.uk){
+    #+ warning = FALSE, message = FALSE, comment = NA
+    uk.outputs <- file.path(outputs, "uk")
+    erase.dto.files(uk.outputs)
 
-#+ warning = FALSE, message = FALSE, comment = NA
-uk.outputs <- file.path(outputs, "uk")
-erase.dto.files(uk.outputs)
 
-# Create output folder if does not exist
-if (file_test("-d",uk.outputs) == FALSE){
-  dir.create(uk.outputs, recursive=T)
+    # Create output folder if does not exist
+    if (file_test("-d",uk.outputs) == FALSE){
+        dir.create(uk.outputs, recursive=T)
+    }
+
+    uk <- new.env()
+    sys.source("combinestock.R", envir=uk, chdir=T)
+
+    with(uk,
+         make.uk(scotland.outputs,england.outputs,wales.outputs,uk.outputs))
+
+    make.zip.file(uk.outputs, "default")
 }
-uk <- new.env()
-sys.source("combinestock.R", envir=uk, chdir=T)
-with(uk,
-     make.uk(scotland.outputs,england.outputs,wales.outputs,uk.outputs))
-
-make.zip.file(uk.outputs, "ews")
