@@ -1,12 +1,17 @@
 # Synopsis
 A series of R scripts that can be used to create structured zip file known as the 'Default Import Package' that can be imported by the [National Household Model](https://github.com/cse-bristol/national-household-model-standalone) as a housing stock. For more information on the content and structure of files within the 'Default Import Package' please see the Stock section within the [NHM documentation](https://github.com/cse-bristol/national-household-model-documentation/releases).
 
-The source files from which the stock files are created cannot be distributed via this public repository, however details for how these files can be obtained can be found [here](accessing_housing_stock_data.md). Once downloaded they files should be added to their respective directories in the '/data folder'.
+The source files from which the stock files are created cannot be distributed via this public repository, however details for how these files can be obtained can be found [here](accessing_housing_stock_data.md). Once downloaded they files should be added to their respective directories in the '/data folder' as follows:
+
+1. Copy the contents of SN 7511 into folder data/EHS_2012
+2. Create a folder called 'fuel_poverty' within data/EHS_2012 and  Copy the contents of SN 7539 into it
+3. Copy the contents of both the Living in Wales:Property Survey and Living in Wales:Household Survey into data/LiW-2008
+4. Copy the Scottish survey data file into data/SHCS_11-13, ensure the file is re-named external_cse_data.sav
 
 # Installation
 The scripts for creating the stock files have been written in [R](https://cran.r-project.org/), which will need to be downloaded and installed.
 
-[Installation for Windows](windows_installation.md)
+1. Installation for Windows](windows_installation.md)
 
 # Running the script
 1. Ensure you have downloaded the required source survey files as previously mentioned.
