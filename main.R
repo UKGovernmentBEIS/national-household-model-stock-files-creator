@@ -45,7 +45,7 @@ option.scotland.build <- TRUE
 option.england.build <- TRUE
 
 #' Whether to build the welsh stock - if false UK stock is not built
-option.wales.build <- TRUEq
+option.wales.build <- TRUE
 
 #' Whether to use the sedbuk lookup device
 option.ehs.spaceheating.sedbuk <- TRUE
