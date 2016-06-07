@@ -11,7 +11,7 @@ The source files from which the stock files are created cannot be distributed vi
 # Installation
 The scripts for creating the stock files have been written in [R](https://cran.r-project.org/), which will need to be downloaded and installed.
 
-1. Installation for Windows](windows_installation.md)
+[Installation for Windows](windows_installation.md)
 
 # Running the script
 1. Ensure you have downloaded the required source survey files as previously mentioned.

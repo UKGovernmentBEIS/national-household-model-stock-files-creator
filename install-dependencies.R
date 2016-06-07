@@ -24,7 +24,8 @@ lapply(
     FUN = function(name) {
         install_version(
             name,
-            dependencies[name]
+            dependencies[name],
+            type = "source"
         )
         dependencies[name]
     }
