@@ -1,3 +1,0 @@
-M2,M5,Heating System Type,basicefficiency,spaceheatingsystemtype,fluetype,mainheatingfuel,iscondensing
-Community Heating,"Communal heating, no CHP","Community heating, no CHP",80,community_heating_without_chp,notapplicable,community_heat,FALSE
-Community Heating,"Communal heating, with CHP","Community heating, with CHP",75,community_heating_with_chp,notapplicable,community_heat,FALSE
