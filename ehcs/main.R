@@ -110,25 +110,25 @@ make.stock <- function(path.to.ehcs, path.to.output) {
 
 merge.all.sav.files <- function(path.to.ehcs){
   #' We use general.sav as our base-line of all cases available 
-  allEntries <- read.spss.with.aacode(file.path(path.to.ehcs, "derived/general_11plus12.sav"))
+  allEntries <- read.spss.with.aacode(file.path(path.to.ehcs, "derived/general.sav"))
   
   #' Now merge all other spss files that should have just one entry for each house case
   toMerge <- Reduce(function(a, b){
     join(a,b, by = "aacode")
   },Map(function(name){
        read.spss.with.aacode(file.path(path.to.ehcs, name))
-  }, c("physical/firstimp_ps.sav",
+  }, c("physical/firstimp_physical.sav",
        "physical/shape.sav",
        "physical/interior.sav",
-       "derived/physical_11plus12.sav",
+       "derived/physical.sav",
        "physical/around.sav",
        "physical/services.sav",
        "physical/flatdets.sav", 
-       "derived/interview_11plus12.sav",
+       "derived/interview.sav",
        "interview/rooms.sav", 
        "physical/elevate.sav", 
-       "fuel_poverty/fuel_poverty_dataset_2012_tc.sav",
-       "fuel_poverty/fuel_poverty_dataset_2012_supplementary_variables_tc.sav")))
+       "fuel_poverty/fuel_poverty_dataset.sav",
+       "fuel_poverty/fuel-poverty-dataset-supplementary-variables.sav")))
   
   merged <- join(allEntries, 
                  toMerge,
@@ -138,7 +138,7 @@ merge.all.sav.files <- function(path.to.ehcs){
   #' Dimensions sav file uses different case for Aacode column so we need to-do a 
   #' different merge   
   allEntries <- merge(merged, 
-                     read.spss.with.aacode.ucase(file.path(path.to.ehcs, "derived/detailed/dimensions_11plus12.sav")),
+                     read.spss.with.aacode.ucase(file.path(path.to.ehcs, "derived/dimensions.sav")),
                      all.x = TRUE,
                      by.x = "aacode", by.y = "Aacode")
 

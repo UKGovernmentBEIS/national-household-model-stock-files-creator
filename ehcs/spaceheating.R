@@ -423,7 +423,8 @@ sedbuk.boiler.type <- function(Finmhboi){
       "Condensing" = "REGULAR",
       "Condensing combi" = "INSTANT_COMBI",
       "Combined primary storage unit" = "CPSU",
-      "No boiler" = "EMPTY"
+      "No boiler" = "EMPTY",
+      "Unknown" = "UNKNOWN"
     )))
 }
 

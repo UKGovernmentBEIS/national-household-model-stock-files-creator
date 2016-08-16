@@ -476,8 +476,8 @@ generate.all.storeys <- function(base.directory, output.file, scale) {
 
     big.data <- Reduce(join.aacode,
                        list(
-                           read.input("derived/detailed/dimensions_11plus12.sav"),
-                           read.input("derived/physical_11plus12.sav"),
+                           read.input("derived/dimensions.sav"),
+                           read.input("derived/physical.sav"),
                            read.input("physical/shape.sav"),
                            read.input("physical/flatdets.sav"),
                            read.input("physical/interior.sav"),

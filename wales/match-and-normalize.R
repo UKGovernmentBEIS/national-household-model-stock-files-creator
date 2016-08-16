@@ -111,6 +111,8 @@ wales.load <- function(wales.inputs) {
         }
     );
 
+    write.csv(matched, file.path(getwd(), "matched.csv"))
+
     ## Join the English weights onto our results.
     matched <- merge(
         matched,

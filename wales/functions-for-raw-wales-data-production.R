@@ -64,59 +64,56 @@ produce.wales.data <- function(path.to.wales) {
 get.data <- function(path.to.wales) {
   LOAD <- function(name) read.spss(file.path(path.to.wales, name), to.data.frame = TRUE)
   #import fuel poverty data
-  fuel.poverty <- LOAD("sss20854_101008_v1_liw_ps_2008_fuel_poverty.sav")
-    
+  fuel.poverty <- LOAD("SSS20854_101008_Fuel_Poverty.sav")
+  
   #import derived physical dataset
-  derived <- LOAD("sss20860_100216_v1_liw_ps_2008_derived.sav")
-    
+  derived <- LOAD("SSS20860_100216_v1_LIW_PS_2008_derived.sav")
   #correct ID to lower case
   names(derived)[names(derived) == "ADDNO"] <- "addno"
   
-  interior <- LOAD("sss20860_100216_v1_liw_ps_2008_interior.sav")
+  interior <- LOAD("SSS20860_100216_v1_LIW_PS_2008_interior.sav")
   names(interior)[names(interior) == "ADDNO"] <- "addno"
-    
-  shape <- LOAD("sss20860_100216_v1_liw_ps_2008_shape.sav")
+  
+  shape <- LOAD("SSS20860_100216_v1_LIW_PS_2008_shape.sav")
   names(shape)[names(shape) == "ADDNO"] <- "addno"
-    
-  firstimp <- LOAD("sss20860_100216_v1_liw_ps_2008_firstimp.sav")
+  
+  firstimp <- LOAD("SSS20860_100216_v1_LIW_PS_2008_firstimp.sav")
   names(firstimp)[names(firstimp) == "ADDNO"] <- "addno"
-    
-  loft <- LOAD("sss20860_100216_v1_liw_ps_2008_loft.sav")
+  
+  loft <- LOAD("SSS20860_100216_v1_LIW_PS_2008_loft.sav")
   names(loft)[names(loft) == "ADDNO"] <- "addno"
-    
-  elevate <- LOAD("sss20860_100216_v1_liw_ps_2008_elevate.sav")
+  
+  elevate <- LOAD("SSS20860_100216_v1_LIW_PS_2008_elevate.sav")
   names(elevate)[names(elevate) == "ADDNO"] <- "addno"
-    
+  
   elevate <- subset(elevate, select = c("addno", "FELCAVFF", "FELCAVLF", "FELCAVRF", "FELCAVBF"))
   elevate$cavitywallinsulation <- ifelse(elevate$FELCAVFF == "Yes" | elevate$FELCAVLF == "Yes" | elevate$FELCAVRF == "Yes" | elevate$FELCAVBF == "Yes",
                                          TRUE,
                                          FALSE)
-   
   
   elevate$cavitywallinsulation <- ifelse(is.na(elevate$cavitywallinsulation), FALSE, elevate$cavitywallinsulation)
-  
-  
+
   ## this file does not read correctly with read.spss;
   ## however, it does work OK with spss.system.file from memisc
+
   services <-
-      as.data.table(
+      as.data.frame(
           as.data.set(
               spss.system.file(file.path(path.to.wales,
-                                         "sss20860_100216_v1_liw_ps_2008_services.sav"))))
-    
-  household.data <- LOAD("household_file_2008_with_disclosure_control.sav")
+                                         "SSS20860_100216_v1_LIW_PS_2008_services.sav"))))
+  
+  household.data <- LOAD("SSS10853_090812_V5_Household_FINAL_data_07_July_2009.sav")
   household.data <- subset(household.data, select = c("addno", "h2", "h6", "p2", "p5du"))
   household.data$hrpsex <- household.data$p2
   household.data$p2 <- NULL
-
-  print("Doing person data")
+  
   #person.data
-  person.data <- LOAD("person_file_2008_with_disclosure_control.sav")
+  person.data <- LOAD("SSS10853_090603_V3_Person_FINAL_data_03_June_2009.sav")
   person.data$longtermillnessdisability <- ifelse(person.data$p10 == "Yes", 1, 0)
   person.data$longtermillnessdisability <- ifelse(is.na(person.data$longtermillnessdisability), 0, person.data$longtermillnessdisability)
   colnames(person.data)[colnames(person.data) == "ADDNO"] <- "addno"
   person.data <- ddply(person.data, .(addno), summarise, longtermillnessdisability = max(longtermillnessdisability))
-  
+    
   #join derived to fuelpov data to start main dataset
   liw.data <- join(fuel.poverty, derived, by = "addno")
   
@@ -166,11 +163,11 @@ print("doingWallTypes")
 #walltypes
 determine.predominant.walltype <- function(path.to.wales) {
   #get shape data for contruction type
-  shape <- read.spss(file.path(path.to.wales, "sss20860_100216_v1_liw_ps_2008_shape.sav"), to.data.frame = TRUE)
+  shape <- read.spss(file.path(path.to.wales, "SSS20860_100216_v1_LIW_PS_2008_shape.sav"), to.data.frame = TRUE)
   names(shape)[names(shape) == "ADDNO"] <- "addno"
   shape <- subset(shape, select = c("addno", "FMTCONST"))
   
-  wall.structure <- read.spss(file.path(path.to.wales, "sss20860_100216_v1_liw_ps_2008_wallstru.sav"), to.data.frame = TRUE)
+  wall.structure <- read.spss(file.path(path.to.wales, "SSS20860_100216_v1_LIW_PS_2008_wallstru.sav"), to.data.frame = TRUE)
   
   
   front.wall.type <- subset(wall.structure, select = c("addno", "FEXWSTYPE", "FEXWS1TE"))

@@ -1,0 +1,59 @@
+(scenario
+ start-date:01/01/2013
+ end-date:01/01/2014
+ stock-id:standard-spss-stock-more-vars
+
+ (~init-modules)
+
+ (sap-tariffs/define)
+ 
+ (on.dates
+  (scenario-start)
+  (apply
+   (sap-tariffs/set-defaults))))
+
+(~module sap-tariffs
+         (t define []
+            (context.tariffs
+             others:[(definitions)]))
+
+         (t definitions []
+            (tariff.simple
+             name:/basic-2009
+             (-sp MainsGas            0.0310 sc:106)
+             (-sp BulkLPG             0.0573 sc:70)
+             (-sp BottledLPG          0.0834)
+             (-sp Oil                 0.0406)
+             (-sp BiomassPellets      0.0493)
+             (-sp BiomassWoodchip     0.0249)
+             (-sp BiomassWood         0.0342)
+             (-sp HouseCoal           0.0297)
+             (-sp CommunityHeat       0.0378)
+             (-sp ExportedElectricity 11.46%))
+
+            (tariff.simple
+             name:/peak-electricity-2009
+             (-sp PeakElectricity    11.46%)
+             (-sp OffPeakElectricity 11.46% sc:0))
+
+            (tariff.simple
+             name:/seven-hour-electricity-2009
+             (-sp PeakElectricity 12.82%)
+             (-sp OffPeakElectricity 4.78% sc:27)))
+
+         (t set-defaults []
+            ;; everyone is on the basic tariffs for normal fuels
+            (action.set-tariffs /basic-2009)
+            ;; storage heater people have split rate electricity
+            (action.case
+             (when (is (house.main-heating-system-type) StorageHeater)
+               (action.set-tariffs /seven-hour-electricity-2009))
+             default:
+             ;; everyone else has flat rate electricity
+             (action.set-tariffs /peak-electricity-2009)))
+
+             ;;; TODO this contains a bug. Fix the bug (standing charge applied with 0 units used.)
+
+         (t -sp [@1 @2 [@sc 0]]
+            (function.simple-pricing fuel:@1 unit-price:@2 standing-charge:@sc)))
+

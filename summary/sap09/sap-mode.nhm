@@ -1,0 +1,78 @@
+(scenario
+ start-date:01/01/2013
+ end-date:01/01/2014
+ stock-id:standard-spss-stock-more-vars
+
+ (~init-modules)
+
+ (on.dates
+  (scenario-start)
+  (apply
+   to: (sample 10%)
+   (sap-measures/wall-insulation type:cavity))))
+
+(include-modules sap-weather.nhm)
+(include-modules sap-physics.nhm)
+(include-modules sap-tariffs.nhm)
+(include-modules sap-behaviour.nhm)
+
+(~module sap-mode
+         (t init []
+            ;; changes to the global context of the scenario
+            ;; the weather
+            (context.weather (sap-weather/average-weather))
+
+            ;; define the default tariffs
+            (sap-tariffs/define)
+            
+            ;; the carbon factors
+            ;; changes to each house in the scenario
+            (on.dates
+             (scenario-start)
+             
+             (apply
+              (sap-tariffs/set-defaults)
+              (sap-physics/set-physics)
+              (sap-behaviour/set-heating-behaviour)))))
+
+;; defines insulation measures which will work sap-ly
+;; at the moment, this is done by installing the measure, and then hitting the house
+;; with the sap-physics hammer to make it conform to expectations.
+;; this could be done more efficiently by writing the correct u-values
+;; out into the measures here instead, but I have been too lazy
+(~module sap-measures
+         (t init [])
+
+         ;; put the house onto a new heating system and then ensure it's
+         ;; on the right tariff for heating.
+         (t heating [@1]
+            (do @1
+                (sap-tariffs/set-defaults)))
+         
+         (t wall-insulation  [@type [@capex] [@thickness 50]]
+            (do name:/wall-insulation
+                (measure.wall-insulation
+                 type:@type
+                 (~maybe capex: @capex)
+                 thickness: @thickness)
+                sap-physics/set-walls))
+         
+         (t loft-insulation [[@capex] [@thickness 200] [@top-up true]]
+            (do name:/loft-insulation
+                (measure.loft-insulation
+                 thickness:@thickness
+                 top-up:@top-up
+                 (~maybe capex:@capex))
+              sap-physics/set-roofs))
+         
+         (t double-glazing   []
+            (do name:/double-glazing
+                (measure.install-glazing ...)
+                sap-physics/set-glazing))
+         
+         (t floor-insulation []
+            (do name:/floor-insulation
+                (measure.floor-insulation ...)
+                (sap-physics/set-floors))))
+
+

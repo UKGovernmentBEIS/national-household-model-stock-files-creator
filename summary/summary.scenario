@@ -1,0 +1,84 @@
+(scenario 
+    start-date:2015 
+    end-date:2016
+    stock-id: summary.stock
+    quantum: 1000000
+    
+    (include-modules sap09/sap-mode.nhm)
+    
+    (~init-modules)
+    (report.transactions)
+    (on.dates
+        (scenario-start)
+        (apply
+            (probe
+                name: output
+                capture: 
+                [(house.survey-code name: aacode) 
+                 (under (sap.occupancy) evaluate: (house.fuel-cost-index deflator: 0.47)
+                        name: nhm-sap09)
+                 (house.total-floor-area name:tfa)
+                 (house.static-property sap09)
+                 (house.heat-loss name:hloss)
+                 (house.region name:region)
+                 (house.built-form name:form)
+                 (house.tenure name:tenure)
+                 (house.main-heating-system-type name:system)
+                 (house.heating-fuel name:fuel)
+                 (house.buildyear name:buildyear)
+                 (house.emissions name:emissions)
+                 (house.energy-use name:energy)
+                 (house.number-of-occupants name:occupants)
+                 (house.volume name:volume)
+                 (house.predominant-wall-type name:wall)
+                 (house.sap-age-band name:sap.age.band year:3000)
+                 (any name:ins
+                      (house.any-wall has-cavity-insulation:true)
+                      (house.any-wall has-internal-insulation:true)
+                      (house.any-wall has-external-insulation:true))
+
+                 (house.static-property epcuse09e)
+                 (house.static-property epcalc09e)
+                 (house.static-property epcshc09e)
+                 (house.static-property epctlc09e)
+
+                 (house.fuel-cost name:lighting.cost
+                  exclude-services:[
+                  Cooking
+                  ;Lighting
+                  Appliances
+                  SpaceHeating
+                  WaterHeating
+                  Generation
+                  ])
+
+                 (house.fuel-cost name:heating.cost
+                  exclude-services:[
+                  Cooking
+                  Lighting
+                  Appliances
+                  ;SpaceHeating
+                  WaterHeating
+                  Generation
+                  ])
+
+                 (house.fuel-cost name:appliance.cost
+                  exclude-services:[
+                  Cooking
+                  Lighting
+                  ;Appliances
+                  SpaceHeating
+                  WaterHeating
+                  Generation
+                  ])
+                 (house.fuel-cost name:dhw.cost
+                  exclude-services:[
+                  Cooking
+                  Lighting
+                  Appliances
+                  SpaceHeating
+                  ;WaterHeating
+                  Generation
+                  ])
+                 ]
+                ))))

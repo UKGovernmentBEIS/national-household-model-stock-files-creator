@@ -1,0 +1,33 @@
+(scenario
+ start-date:01/01/2013
+ end-date:01/01/2014
+ stock-id:standard-spss-stock-more-vars
+
+ (~init-modules)
+ (on.dates scenario-start
+           (apply
+            (sap-behaviour/set-heating-behaviour))))
+
+
+(~module sap-behaviour
+         (t init []
+            (def-action /heating-temperatures
+              (action.set-heating-temperatures
+				living-area-temperature:21
+				temperature-difference:3
+                desired-heating-months: [January February March April May October November December]))
+
+            (def-action /heating-schedule
+              (action.set-heating-schedule
+               (schedule on:Weekends
+                         (heating between:7 and: 23))
+               (schedule on:Weekdays
+                         (heating between:7  and: 9)
+                         (heating between:16 and: 23))))
+            )
+         
+         (t set-heating-behaviour []
+            (do /heating-temperatures
+                /heating-schedule)))
+
+

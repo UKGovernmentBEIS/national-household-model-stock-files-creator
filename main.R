@@ -40,10 +40,10 @@ option.ehs.spaceheating.lookups <- c(
 )
 
 #' Whether to build the scotland stock - if false UK stock is not built
-option.scotland.build <- TRUE
+option.scotland.build <- FALSE
 
 #' Whether to build the english stock - if false UK stock is not built
-option.england.build <- TRUE
+option.england.build <- FALSE
 
 #' Whether to build the welsh stock - if false UK stock is not built
 option.wales.build <- TRUE
@@ -56,7 +56,7 @@ option.ehs.spaceheating.sedbuk.run <- TRUE
 
 #' Whether to generate summaries
 #' requires the NHM jar!
-option.generate.summaries <- TRUE
+option.generate.summaries <- FALSE
 
 #' Whether to scale the total floor area of the storeys produced for a house
 #' to match the EHS variable FloorArea from derived/dimensions.sav
