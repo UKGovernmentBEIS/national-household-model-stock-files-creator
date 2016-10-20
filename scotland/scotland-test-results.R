@@ -55,7 +55,7 @@ space_heating <- read.csv(file.path(scotland.outputs,"space-heating.csv"),
 #+ eval=TRUE, echo=FALSE
 knitr::kable(test.builtform(shcs, cases))
 builtform <- data.frame(survey=paste(shcs$C1,shcs$C2,sep=" - "),stock = cases$builtformtype)
-ggplot(builtform,aes(x=stock,fill=survey))+geom_bar(stat="bin")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=6))    
+ggplot(builtform,aes(x=stock,fill=survey))+geom_bar(stat="count")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=6))    
 
 
 #' 
@@ -75,7 +75,7 @@ knitr::kable(test.builtyear(shcs, cases))
 #+ eval=TRUE, echo=FALSE
 knitr::kable(test.tenure(shcs, cases))
 tenure <- data.frame(survey=shcs$tenure,stock = cases$tenuretype)
-ggplot(tenure,aes(x=stock,fill=survey))+geom_bar(stat="bin")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=3))   
+ggplot(tenure,aes(x=stock,fill=survey))+geom_bar(stat="count")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=3))   
 
 
 #' 
@@ -122,7 +122,7 @@ knitr::kable(test.numberbedrooms(shcs, cases))
 #+ eval=TRUE, echo=FALSE
 knitr::kable(test.groundfloortype(shcs,cases))
 floortype <- data.frame(survey=shcs$N1_E,stock = cases$grndfloortype)
-ggplot(floortype,aes(x=stock,fill=survey))+geom_bar(stat="bin")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=3))   
+ggplot(floortype,aes(x=stock,fill=survey))+geom_bar(stat="count")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=3))   
 
 
 #'
@@ -188,7 +188,7 @@ knitr::kable(test.loftinsulationthickness(shcs, roofs))
 #+ eval=TRUE, echo=FALSE
 knitr::kable(test.rooftype(shcs, roofs))
 rooftype <- data.frame(survey=shcs$Q19,stock = roofs$structuretype)
-ggplot(rooftype,aes(x=stock,fill=survey))+geom_bar(stat="bin")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=2))  
+ggplot(rooftype,aes(x=stock,fill=survey))+geom_bar(stat="count")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=2))  
 
 #'
 #' \pagebreak

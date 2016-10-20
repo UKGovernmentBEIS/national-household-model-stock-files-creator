@@ -15,7 +15,7 @@ dependencies = list(
     rmarkdown = "0.8.1",
     classInt = "0.1-23",
     RUnit = "0.4.31",
-    ggplot2 = "1.0.0",
+    ggplot2 = "2.0.0",
     knitr = "1.12.3"
 )
 
