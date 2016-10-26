@@ -75,7 +75,7 @@ water_heating <- read.csv(file.path(england.outputs,"water-heating.csv"),
 #+ eval=TRUE, echo=FALSE
 knitr::kable(test.builtform(ehs, cases))
 builtform <- data.frame(survey=ehs$dwtypenx,stock = cases$builtformtype)
-ggplot(builtform,aes(x=stock,fill=survey))+geom_bar(stat="count")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=6))    
+ggplot(builtform,aes(x=stock,fill=survey))+geom_bar(stat="bin")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=6))    
 
 
 #' 
@@ -95,7 +95,7 @@ knitr::kable(test.builtyear(ehs, cases))
 #+ eval=TRUE, echo=FALSE
 knitr::kable(test.tenure(ehs, cases))
 tenure <- data.frame(survey=ehs$tenure8x,stock = cases$tenuretype)
-ggplot(tenure,aes(x=stock,fill=survey))+geom_bar(stat="count")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=3))   
+ggplot(tenure,aes(x=stock,fill=survey))+geom_bar(stat="bin")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=3))   
 
 
 #' 
@@ -198,7 +198,7 @@ knitr::kable(test.loftinsulationthickness(ehs, roofs))
 #+ eval=TRUE, echo=FALSE
 knitr::kable(test.rooftype(ehs, roofs))
 rooftype <- data.frame(survey=ehs$typerstr,stock = roofs$structuretype)
-ggplot(rooftype,aes(x=stock,fill=survey))+geom_bar(stat="count")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=2))  
+ggplot(rooftype,aes(x=stock,fill=survey))+geom_bar(stat="bin")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=2))  
 
 #' 
 #' \pagebreak
@@ -208,7 +208,7 @@ ggplot(rooftype,aes(x=stock,fill=survey))+geom_bar(stat="count")+scale_fill_brew
 #+ eval=TRUE, echo=FALSE
 knitr::kable(test.roofcovertype(ehs, roofs))
 roofcovertype <- data.frame(survey=ehs$typercov,stock = roofs$coveringtype)
-ggplot(roofcovertype,aes(x=stock,fill=survey))+geom_bar(stat="count")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=2))  
+ggplot(roofcovertype,aes(x=stock,fill=survey))+geom_bar(stat="bin")+scale_fill_brewer(palette = "RdYlBu")+theme_cse()+guides(fill=guide_legend(nrow=2))  
 
 
 #'

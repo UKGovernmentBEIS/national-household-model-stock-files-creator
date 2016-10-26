@@ -10,6 +10,15 @@ theme_cse <- function(base_size = 10, base_family = "sans") {
                                       size = 0.5,
                                       linetype = 1
     ),
+    text =               element_text(family = base_family,
+                                      face = "plain",
+                                      colour = "black",
+                                      size = base_size,
+                                      hjust = 0.5,
+                                      vjust = 0.5,
+                                      angle = 0,
+                                      lineheight = 1.1
+    ),
     
     axis.line =          element_line(size=0.25),
     axis.line.y =        element_line(size=0.25),
