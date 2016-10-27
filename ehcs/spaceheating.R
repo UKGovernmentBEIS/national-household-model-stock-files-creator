@@ -93,23 +93,25 @@ space.heating.make <- function(allEntries, path.to.ehcs, path.to.output){
          ,isstoragecombicylinderthemostatpresent=rep("NULL", nrow(sedbuk))
          ,isstoragecombicylinderfactoryinsulated=rep("NULL", nrow(sedbuk))
          ,storageheatertype=rep("", nrow(sedbuk))
+         ,PcdbMatch=rep(T,nrow(sedbuk))
       )
   }
   #gather information for the SAP table 4a/4b and Fincbcd matched data into a second
   #data frame of a similar structure
   matched.cases <-data.frame(
-                aacode=matched.cases$aacode
-               ,basicefficiency=matched.cases$basicefficiency
-               ,winterefficiency=matched.cases$winterefficiency
-               ,summerefficiency=matched.cases$summerefficiency
-               ,spaceheatingsystemtype=tolower(matched.cases$spaceheatingsystemtype)
-               ,fluetype=tolower(matched.cases$fluetype)
-               ,mainheatingfuel=tolower(matched.cases$mainheatingfuel)
-               ,iscondensing=as.factor(matched.cases$iscondensing)
-               #,matchSource=rep("lookup", length(matched.cases$aacode))
-               ,isstoragecombicylinderthemostatpresent=rep("NULL", nrow(matched.cases))
-               ,isstoragecombicylinderfactoryinsulated=rep("NULL", nrow(matched.cases))
-               ,storageheatertype=tolower(matched.cases$storageheatertype)
+      aacode=matched.cases$aacode
+     ,basicefficiency=matched.cases$basicefficiency
+     ,winterefficiency=matched.cases$winterefficiency
+     ,summerefficiency=matched.cases$summerefficiency
+     ,spaceheatingsystemtype=tolower(matched.cases$spaceheatingsystemtype)
+     ,fluetype=tolower(matched.cases$fluetype)
+     ,mainheatingfuel=tolower(matched.cases$mainheatingfuel)
+     ,iscondensing=as.factor(matched.cases$iscondensing)
+     #,matchSource=rep("lookup", length(matched.cases$aacode))
+     ,isstoragecombicylinderthemostatpresent=rep("NULL", nrow(matched.cases))
+     ,isstoragecombicylinderfactoryinsulated=rep("NULL", nrow(matched.cases))
+     ,storageheatertype=tolower(matched.cases$storageheatertype)
+     ,PcdbMatch=rep(F,nrow(matched.cases))
   )
 
   if (use.sedbuk) {
