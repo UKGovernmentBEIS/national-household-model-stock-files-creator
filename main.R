@@ -56,7 +56,7 @@ option.ehs.spaceheating.sedbuk.run <- TRUE
 
 #' Whether to generate summaries
 #' requires the NHM jar!
-option.generate.summaries <- TRUE
+option.generate.summaries <- FALSE
 
 #' Whether to scale the total floor area of the storeys produced for a house
 #' to match the EHS variable FloorArea from derived/dimensions.sav
