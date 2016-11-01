@@ -194,7 +194,7 @@ HAS_ELECTRIC_SHOWER <- function(waterheating){
     )
     shower.detail <- transmute(.data=shower.detail
       ,aacode
-      ,has.electric.shower = has.shower & shower.is.electric)
+      ,hasElectricShower = has.shower & shower.is.electric)
 
     return (shower.detail)
 }

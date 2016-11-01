@@ -165,7 +165,7 @@ HAS_ELECTRIC_SHOWER <- function(allEntries){
 
     has.electric <- transmute(.data=has.electric
                              ,aacode
-                             ,has.electric.shower = is.single.electric | is.multi.electric)
+                             ,hasElectricShower = is.single.electric | is.multi.electric)
     
     return(has.electric)
 }    
