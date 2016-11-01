@@ -100,7 +100,7 @@ make.waterheating <- function(shcs,path.to.input,path.to.output) {
                                             ,the.cylindervolume)
   the.withcentralheating <- with.centralheating(waterheating$withcentralheating)
   
-  data.frame(aacode = waterheating$uprn_new
+  out <- data.frame(aacode = waterheating$uprn_new
              ,basicefficiency = the.basicefficiency
              ,chpfraction = the.chpfraction
              ,communitychargingusagebased = the.communitychargingusagebased
@@ -120,7 +120,9 @@ make.waterheating <- function(shcs,path.to.input,path.to.output) {
              ,solarstorevolume = the.solarstorevolume
              ,waterheatingsystemtype = waterheating$waterheatingsystemtype
              ,withcentralheating = the.withcentralheating
-  )
+             )
+
+    out <- join(out, HAS_ELECTRIC_SHOWER(out), by="aacode")
 }
 
 #'\pagebreak
@@ -171,9 +173,30 @@ create.waterheating <- function(shcs,path.to.output,path.to.input){
   #Ensures that only stock where withcentralheating is false
   #have waterheating matched
   waterheating$withcentralheating <- 0
+      
   matched.waterheating <- join(spaceheating,waterheating
-                               ,by=c("M17","M18","withcentralheating"))
+                              ,by=c("M17","M18","withcentralheating"))
+    
   return(matched.waterheating)
+}
+
+#' Adds a flaag to waterheating indicating whether an electric shower is present
+#'
+#' A simple lookup based on there being and instant single-point or mult-point waterheating source
+#' that uses electricty as an indication of an elecrtic shower. No primary research has been carried out to
+#' validate this method.
+#'  
+HAS_ELECTRIC_SHOWER <- function(waterheating){
+    shower.detail <- data.frame(
+        aacode = waterheating$aacode
+        ,has.shower = waterheating$waterheatingsystemtype == "singlepoint" | waterheating$waterheatingsystemtype == "multipoint"
+        ,shower.is.electric = waterheating$mainheatingfuel == "electricity"
+    )
+    shower.detail <- transmute(.data=shower.detail
+      ,aacode
+      ,has.electric.shower = has.shower & shower.is.electric)
+
+    return (shower.detail)
 }
 
 #'
