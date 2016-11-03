@@ -68,6 +68,32 @@ elevations.make <- function(allEntries, doorEntries) {
   return(allElevations)
 }
 
+ELEVATION_CARDINAL_TO_RADIAN <- function(cardinal.of.front, elevation.type){
+    TO.RADIANS <- function(compass.point){ (2 * pi) * compass.point / 8}
+    elevation <- elevation.type
+
+    #Get Compass point of front elevation
+    cp <-  as.numeric(as.character(as.factor(checked.revalue(
+        cardinal.of.front,c(
+                     "North" = 0
+                    ,"North-east" =  1
+                    ,"East" =  2
+                    ,"South-east" = 3
+                    ,"South" =  4
+                    ,"South-west" =  5
+                    ,"West" =  6
+                    ,"North-west" =  7)))))
+
+    #Get the compass point for this elevation
+    elevation.compass.point <- cp
+    if(elevation == "RIGHT"){ elevation.compass.point <-  if((cp + 2) > 8) (cp + 2)-8 else (cp + 2)}
+    if(elevation == "BACK"){ elevation.compass.point <- if((cp + 4) > 8) (cp + 4)-8 else (cp + 4)}
+    if(elevation == "LEFT"){elevation.compass.point <-  if((cp -2) < 0) (8 + (cp -2)) else (cp -2)}
+    
+   #Return the elevation as a radian
+   return(TO.RADIANS(elevation.compass.point))
+}
+
 #' ##Window glazing
 #'
 #'Determines the window glazing proportion in the dwelling and constructs a window
@@ -288,13 +314,14 @@ wall.structure.type.lookup <-function(typewstr2){
 
 #' ## Wall attachments
 #' 
-#' Calculates tenths attached, opening and partywall for each elevation
+#' Calculates tenths attached, opening, angle from north and partywall for each elevation
 #'
 #' @param aacode
 #' @param Felfenfw - tenths opening front wall
 #' @param Felfenbw - tenths opening back wall
 #' @param Felfenlw - tenths opening left wall
 #' @param Felfenrw - tenths opening right wall
+#' @param felorien - direction front eleveation faces
 #'
 #' @note - There are 113 Case where a house has an NA value for back tenths attached
 #' @note - There are 3947 Case where a house has an NA value for left tenths attached
@@ -318,37 +345,45 @@ calc.elevation.detail <- function(allEntries){
   rightTenthsAttached <- ifelse(is.a.house(allEntries$dwtype8x) == TRUE, 
                          ifelse(is.na(allEntries$Fvwtenrf),10, allEntries$Fvwtenrf), 
                          10 - allEntries$Fdffrooa)
-  
+
+  elevation.type = rep(factor("FRONT", levels=c("FRONT","BACK","LEFT","RIGHT")), length(allEntries$aacode))
   frontElevations <- data.frame(
     aacode = allEntries$aacode,
-    elevationtype = rep("FRONT", length(allEntries$aacode)),
+    elevationtype = elevation.type,
     tenthsattached = frontTenthsAttached,
     tenthsopening = ifelse(is.na(allEntries$Felfenfw), 0, allEntries$Felfenfw),
-    tenthspartywall = ifelse(isAHouse == TRUE, frontTenthsAttached, allEntries$Fdffroof)
+    tenthspartywall = ifelse(isAHouse == TRUE, frontTenthsAttached, allEntries$Fdffroof),
+    angleFromNorth = ELEVATION_CARDINAL_TO_RADIAN(allEntries$felorien,elevation.type)
   )
-  
+
+  elevation.type = rep(factor("BACK", levels=c("FRONT","BACK","LEFT","RIGHT")), length(allEntries$aacode))
   backElevations <- data.frame(
     aacode = allEntries$aacode,
-    elevationtype = rep("BACK", length(allEntries$aacode)),
+    elevationtype = elevation.type,
     tenthsattached = backTenthsAttached,
     tenthsopening = ifelse(is.na(allEntries$Felfenbw), 0, allEntries$Felfenbw),
-    tenthspartywall = ifelse(isAHouse == TRUE, backTenthsAttached, allEntries$Fdfbckof)
+    tenthspartywall = ifelse(isAHouse == TRUE, backTenthsAttached, allEntries$Fdfbckof),
+    angleFromNorth = ELEVATION_CARDINAL_TO_RADIAN(allEntries$felorien,elevation.type)
   )
-  
+
+  elevation.type = rep(factor("LEFT", levels=c("FRONT","BACK","LEFT","RIGHT")), length(allEntries$aacode))
   leftElevations <- data.frame(
     aacode = allEntries$aacode,
-    elevationtype = rep("LEFT", length(allEntries$aacode)),
+    elevationtype = elevation.type,
     tenthsattached = leftTenthsAttached,
     tenthsopening = ifelse(is.na(allEntries$Felfenlw), 0, allEntries$Felfenlw),
-    tenthspartywall = ifelse(isAHouse == TRUE, leftTenthsAttached, allEntries$Fdflftof)
+    tenthspartywall = ifelse(isAHouse == TRUE, leftTenthsAttached, allEntries$Fdflftof),
+    angleFromNorth = ELEVATION_CARDINAL_TO_RADIAN(allEntries$felorien,elevation.type)
   )
-  
+
+  elevation.type = rep(factor("RIGHT", levels=c("FRONT","BACK","LEFT","RIGHT")), length(allEntries$aacode))
   rightElevations <- data.frame(
     aacode = allEntries$aacode,
-    elevationtype = rep("RIGHT", length(allEntries$aacode)),
+    elevationtype = elevation.type,
     tenthsattached = rightTenthsAttached,
     tenthsopening = ifelse(is.na(allEntries$Felfenrw), 0, allEntries$Felfenrw),
-    tenthspartywall = ifelse(isAHouse == TRUE, rightTenthsAttached, allEntries$Fdfrigof)
+    tenthspartywall = ifelse(isAHouse == TRUE, rightTenthsAttached, allEntries$Fdfrigof),
+    angleFromNorth = ELEVATION_CARDINAL_TO_RADIAN(allEntries$felorien,elevation.type)
   )
   
   mergedElevations <- rbind(frontElevations, backElevations, leftElevations, rightElevations)

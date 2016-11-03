@@ -137,6 +137,7 @@ make.waterheating <- function(allEntries, spaceHeatingDTO, path.to.ehcs){
   allWaterHeating$winterefficiency <- allWaterHeating$winterefficiency / 100
   allWaterHeating$summerefficiency <- allWaterHeating$summerefficiency / 100
 
+  allWaterHeating$PcdbMatch <- rep(F,nrow(allWaterHeating))
   allWaterHeating <- join(allWaterHeating, HAS_ELECTRIC_SHOWER(allEntries), by = "aacode")
     
   print(paste("water heating DTO complete; number of records: ", nrow(allWaterHeating)))

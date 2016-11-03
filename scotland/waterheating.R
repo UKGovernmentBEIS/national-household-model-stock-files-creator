@@ -100,7 +100,7 @@ make.waterheating <- function(shcs,path.to.input,path.to.output) {
                                             ,the.cylindervolume)
   the.withcentralheating <- with.centralheating(waterheating$withcentralheating)
   
-  out <- data.frame(aacode = waterheating$uprn_new
+  waterheating <- data.frame(aacode = waterheating$uprn_new
              ,basicefficiency = the.basicefficiency
              ,chpfraction = the.chpfraction
              ,communitychargingusagebased = the.communitychargingusagebased
@@ -120,9 +120,10 @@ make.waterheating <- function(shcs,path.to.input,path.to.output) {
              ,solarstorevolume = the.solarstorevolume
              ,waterheatingsystemtype = waterheating$waterheatingsystemtype
              ,withcentralheating = the.withcentralheating
-             )
+    )
 
-    out <- join(out, HAS_ELECTRIC_SHOWER(out), by="aacode")
+    waterheating$PcdbMatch <- rep(F,nrow(waterheating))
+    waterheating <- join(waterheating, HAS_ELECTRIC_SHOWER(waterheating), by="aacode")
 }
 
 #'\pagebreak
@@ -173,7 +174,7 @@ create.waterheating <- function(shcs,path.to.output,path.to.input){
   #Ensures that only stock where withcentralheating is false
   #have waterheating matched
   waterheating$withcentralheating <- 0
-      
+
   matched.waterheating <- join(spaceheating,waterheating
                               ,by=c("M17","M18","withcentralheating"))
     
