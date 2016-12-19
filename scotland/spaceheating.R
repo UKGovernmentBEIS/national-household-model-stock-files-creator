@@ -367,12 +367,6 @@ flue.type <- function(flue){
 #'@param condensing - a vector containing a flag to indicate wether each boiler is
 #' condensing or not, information from sedbuk output and look-up files
 is.condensing <- function(condensing){
-  condensing <- as.factor(condensing)
-  condensing <- as.factor(checked.revalue(
-    condensing,
-    c("TRUE" = "true"
-      ,"FALSE" = "false"
-    )))
   return(condensing)
 }
 
