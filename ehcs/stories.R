@@ -166,6 +166,10 @@ floor.number.to.type <- function(n) {
         "FIRST_FLOOR"
     } else if (n == 2) {
         "SECOND_FLOOR"
+    } else if (n == 99) {
+        "TOP_FLOOR"
+    } else if (n == 100) {
+        "ROOM_IN_ROOF"
     } else {
         "HIGHER_FLOOR"
     }
@@ -328,6 +332,10 @@ one.flat.storeys <- function(frame) {
         start.floor <- -1
     } else if (tolower(frame$finlopos) == "ground floor flat") {
         start.floor <- 0
+    } else if (tolower(frame$finlopos) == "top floor flat") {
+        ## We want the last floor to be floor 99, and assign the first floor number accordingly
+        ## In practice, most top-floor flats have a single floor only.
+        start.floor <- 99 - (floors - 1)
     } else {
         start.floor <- 1
     }
