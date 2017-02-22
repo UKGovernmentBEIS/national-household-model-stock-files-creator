@@ -341,10 +341,10 @@ calc.elevation.detail <- function(allEntries){
                         10 - allEntries$Fdfbckoa)
   leftTenthsAttached <- ifelse(is.a.house(allEntries$dwtype8x) == TRUE, 
                         ifelse(is.na(allEntries$Fvwtenlf),10, allEntries$Fvwtenlf),
-                        10 - allEntries$Fdfrigoa)
+                        10 - allEntries$Fdflftoa)##front right?
   rightTenthsAttached <- ifelse(is.a.house(allEntries$dwtype8x) == TRUE, 
                          ifelse(is.na(allEntries$Fvwtenrf),10, allEntries$Fvwtenrf), 
-                         10 - allEntries$Fdffrooa)
+                         10 - allEntries$Fdfrigoa)##gtony?
 
   elevation.type = rep(factor("FRONT", levels=c("FRONT","BACK","LEFT","RIGHT")), length(allEntries$aacode))
   frontElevations <- data.frame(
