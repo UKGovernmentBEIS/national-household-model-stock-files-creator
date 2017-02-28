@@ -3,7 +3,7 @@
 #' author: "Centre for Sustainable Energy"
 #' date: "2015"
 #' 
-#' ---
+
 library(Hmisc)
 library(memisc)
 library(foreign)
@@ -18,6 +18,7 @@ library(dplyr) #Required for dataframe manipulation
 library(ggplot2) #Required to create plots
 library(grid) #Required to create plots
 library(splancs) # required for areapl function
+
 library(utils) # for zip
 #' ## Controllable settings
 #' EHS space heating lookup tables to use, in preference order
@@ -122,7 +123,7 @@ if(option.scotland.build){
 
     scotland.tests <- new.env()
     rmarkdown::render("scotland/scotland-test-results.R", "pdf_document", envir = scotland.tests
-                     ,output_dir = file.path(dirname(getwd()),"Reports"))
+                    ,output_dir = file.path(dirname(getwd()),"Reports"))
 
     scotland.stockreport <- new.env()
     rmarkdown::render("scotland/main.R", "pdf_document", envir = scotland.stockreport
@@ -150,7 +151,7 @@ if(option.england.build){
 
     england.tests <- new.env()
     rmarkdown::render("ehcs/england-test-results.R", "pdf_document", envir = england.tests
-                     ,output_dir = file.path(dirname(getwd()),"Reports"))
+                    ,output_dir = file.path(dirname(getwd()),"Reports"))
 
     england.stockreport <- new.env()
     rmarkdown::render("ehcs/main.R", "pdf_document", envir = england.stockreport

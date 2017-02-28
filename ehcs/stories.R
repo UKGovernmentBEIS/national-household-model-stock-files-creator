@@ -166,6 +166,10 @@ floor.number.to.type <- function(n) {
         "FIRST_FLOOR"
     } else if (n == 2) {
         "SECOND_FLOOR"
+    } else if (n == 99) {
+        "TOP_FLOOR"
+    } else if (n == 100) {
+        "ROOM_IN_ROOF"
     } else {
         "HIGHER_FLOOR"
     }
@@ -261,10 +265,10 @@ make.one.floor <- function(floor, # floor number, from 1 to n
 #' ## Should we start with a basement storey?
 #'
 #' This is true if basement is 'yes', or if fdhmlev1 is bb or -1, or dwtype3x contains 'basement'
-is.basement <- function(frame)
+is.basement <- function(frame, flat)
     frame$basement == "yes" | # sometimes the basement field is yes
         tolower(frame$fdhmlev1) %in% c("bb", "-1") | ## sometimes there is bb in the coding
-        grepl("basement", frame$dwtype3x, ignore.case=TRUE) # and sometimes it says basement in the name
+        (flat & grepl("basement", frame$finlopos, ignore.case=TRUE)) # and sometimes it says basement in the name
 
 #' ## Now we're getting somewhere: make the DTO data for one house
 #'
@@ -324,10 +328,14 @@ one.flat.storeys <- function(frame) {
     floors <- ifelse(is.na(frame$fdffloor), 1, frame$fdffloor)
 
     ## How we determine the bottom floor's type:
-    if (is.basement(frame)) {
+    if (is.basement(frame, flat = TRUE)) {
         start.floor <- -1
     } else if (tolower(frame$finlopos) == "ground floor flat") {
         start.floor <- 0
+    } else if (tolower(frame$finlopos) == "top floor flat") {
+        ## We want the last floor to be floor 99, and assign the first floor number accordingly
+        ## In practice, most top-floor flats have a single floor only.
+        start.floor <- 99 - (floors - 1)
     } else {
         start.floor <- 1
     }
@@ -402,7 +410,7 @@ one.building.storeys <- function(frame, scale) {
     if (grepl("house", frame$dwtype8x)) {
         ## so if we are making a house, we need to know how many storeys and
         ## whether there's a basement
-        if (is.basement(frame)) {
+        if (is.basement(frame, flat = FALSE)) {
             start.floor <- -1
             floors.total <- frame$storeyx + 1
         } else {

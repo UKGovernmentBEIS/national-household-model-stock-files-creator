@@ -2,3 +2,5 @@
 **/**/r_sedbuk.csv
 **/outputs/
 **/*.pdf
+.RData
+.Rhistory

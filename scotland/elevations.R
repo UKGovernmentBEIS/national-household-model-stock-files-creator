@@ -108,6 +108,7 @@ make.elevations <- function(shcs) {
                  ,tenthsopening = elevations$tenthsopening
                  ,tenthspartywall = elevations$tenthsattached
                  ,check.names = FALSE
+                 ,angleFromNorth = ""
                  )
   #correct insulation values where no external wall exists
 #   elevations$cavitywallinsulation <- ifelse(elevations$tenthsattached == 10 & 

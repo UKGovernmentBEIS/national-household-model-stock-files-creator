@@ -83,7 +83,7 @@ make.spaceheating <- function(shcs, path.to.output) {
   the.storageheatercontroltype <- storage.heatercontroltype(spaceheating$M21
                                                             ,spaceheating$M2)
   the.storageheatertype <- storage.heatertype(spaceheating$M16
-                                              ,spaceheating$spaceheatingsystemtype)
+                                             ,spaceheating$spaceheatingsystemtype)
   
   data.frame(aacode = spaceheating$uprn_new
              ,basicefficiency = the.basicefficiency
@@ -107,6 +107,7 @@ make.spaceheating <- function(shcs, path.to.output) {
              ,storagecombisolarvolume = spaceheating$storesolarvolume
              ,storageheatercontroltype = the.storageheatercontroltype 
              ,storageheatertype = the.storageheatertype
+             ,PcdbMatch = spaceheating$PcdbMatch
   )
 }
 
@@ -173,6 +174,7 @@ create.heating <- function(shcs,path.to.output){
                                ,checkedfueltype=sedbuk$fueltype
                                ,condensing=sedbuk$condensing
                                ,installationyear=NA
+                               ,PcdbMatch=sedbuk$PcdbMatch
   )
   
   matched.cases <-data.frame(uprn_new=matched.cases$uprn_new
@@ -185,6 +187,7 @@ create.heating <- function(shcs,path.to.output){
                              ,checkedfueltype=matched.cases$mainheatingfuel
                              ,condensing=as.factor(matched.cases$iscondensing)
                              ,installationyear=matched.cases$installationyear
+                             ,PcdbMatch=rep(F, nrow(matched.cases)) 
   )
   
   matched.heating <- rbind(matched.sedbuk,matched.cases)
@@ -192,6 +195,7 @@ create.heating <- function(shcs,path.to.output){
                                  ,"storesolarvolume","storeinsulationthickness"))
   matched.heating <- join(matched.heating,sedbuk,by="uprn_new")
   heating <- join(shcs,matched.heating,by="uprn_new")
+  
   return(heating)
 }
 #'
@@ -210,6 +214,7 @@ sedbuk.heating <- function(path.to.output){
   sedbuk <- read.csv(file.path(path.to.output,"sedbuk-output.csv"), header=TRUE)
   colnames(sedbuk)[names(sedbuk) == "aacode"] <- "uprn_new"
   sedbuk<-subset(sedbuk,select=c(-manufacturer,-brand,-model,-qualifier))
+  sedbuk["PcdbMatch"] <- rep(T, nrow(sedbuk)) 
   return(sedbuk)
 }
 
@@ -367,13 +372,6 @@ flue.type <- function(flue){
 #'@param condensing - a vector containing a flag to indicate wether each boiler is
 #' condensing or not, information from sedbuk output and look-up files
 is.condensing <- function(condensing){
-  condensing <- as.factor(checked.revalue(
-    condensing,
-    c("TRUE" = "true"
-      ,"FALSE" = "false"
-      ,"true" = "true"
-      ,"false" = "false"
-    )))
   return(condensing)
 }
 

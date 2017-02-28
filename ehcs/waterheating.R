@@ -17,7 +17,7 @@ source("common.R", chdir=T)
 #'
 #'The water-heating.csv file contains a set of information on the hot water heating 
 #'systems, including fuel type and efficencies. However, a significant majority of 
-#'dwellings will have their hot water provide by their space heating systems (e.g. 
+#'dwellings will have their hot water provided by their space heating systems (e.g. 
 #'mains gas combi boilers or standard boilers with a water tank). In these instances,
 #'much less information is required in the water-heating.csv and data that describes 
 #'the efficiency or fuel used by the water heating system will be taken from the 
@@ -136,10 +136,40 @@ make.waterheating <- function(allEntries, spaceHeatingDTO, path.to.ehcs){
   allWaterHeating$basicefficiency <- allWaterHeating$basicefficiency / 100
   allWaterHeating$winterefficiency <- allWaterHeating$winterefficiency / 100
   allWaterHeating$summerefficiency <- allWaterHeating$summerefficiency / 100
-  
+
+  allWaterHeating$PcdbMatch <- rep(F,nrow(allWaterHeating))
+  allWaterHeating <- join(allWaterHeating, HAS_ELECTRIC_SHOWER(allEntries), by = "aacode")
+    
   print(paste("water heating DTO complete; number of records: ", nrow(allWaterHeating)))
   return (allWaterHeating)
 }
+
+#' Returns a data frame indicating whether the property has an electric shower or not
+#' @param allEntries - combined sav files from the EHS
+HAS_ELECTRIC_SHOWER <- function(allEntries){
+    water.heating.details <- data.frame(
+        aacode = allEntries$aacode
+       ,region = allEntries$GorEHS
+       ,dwellingcaseweight =  allEntries$aagpd1112
+       ,has.multi.point = allEntries$Finwmppr == "Yes"
+       ,has.single.point = allEntries$Finwsppr == "Yes"
+       ,multi.point.is.electric = allEntries$Finwmpty == "Standard"
+       ,single.point.is.electric = allEntries$Finwspty == "Standard"
+    )
+    
+    has.electric <- transmute(.data=water.heating.details,
+                              aacode
+                             #,region
+                             #,dwellingcaseweight
+                             ,is.single.electric = has.multi.point &  multi.point.is.electric
+                             ,is.multi.electric = has.single.point & single.point.is.electric)
+
+    has.electric <- transmute(.data=has.electric
+                             ,aacode
+                             ,hasElectricShower = is.single.electric | is.multi.electric)
+    
+    return(has.electric)
+}    
 
 #' ## Immersion heater system type
 #' 
