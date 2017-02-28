@@ -1,0 +1,25 @@
+M2,M5,M9,M13,Heating System Type,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,spaceheatingsystemtype,fluetype,mainheatingfuel,iscondensing
+Boiler,Off-peak electric,No,Direct entry,Electric boiler,Direct acting electric boiler,,100,1,1,191,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,Not applicable,Direct entry,Electric boiler,Direct acting electric boiler,,100,1,1,191,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,Unobtainable,Direct entry,Electric boiler,Direct acting electric boiler,,100,1,1,191,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,Yes,Direct entry,Electric boiler,Direct acting electric boiler,,100,1,1,191,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,No,Dry core,Electric boiler,Electric dry core storage boiler in unheated space a) b),,85,2,0.75,194,,0,85,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,Not applicable,Dry core,Electric boiler,Electric dry core storage boiler in heated space a) b),,100,2,0.75,193,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,Unobtainable,Dry core,Electric boiler,Electric dry core storage boiler in heated space a) b),,100,2,0.75,193,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,Yes,Dry core,Electric boiler,Electric dry core storage boiler in heated space a) b),,100,2,0.75,193,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,No,Storage,Electric boiler,Electric water storage boiler in unheated space a) b),,85,2,0.75,196,,0,85,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,Not applicable,Storage,Electric boiler,Electric water storage boiler in heated space a) b),,100,2,0.75,195,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,Unobtainable,Storage,Electric boiler,Electric water storage boiler in heated space a) b),,100,2,0.75,195,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Off-peak electric,Yes,Storage,Electric boiler,Electric water storage boiler in heated space a) b),,100,2,0.75,195,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,No,Direct entry,Electric boiler,Direct acting electric boiler,,100,1,1,191,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,Not applicable,Direct entry,Electric boiler,Direct acting electric boiler,,100,1,1,191,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,Unobtainable,Direct entry,Electric boiler,Direct acting electric boiler,,100,1,1,191,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,Yes,Direct entry,Electric boiler,Direct acting electric boiler,,100,1,1,191,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,No,Dry core,Electric boiler,Electric dry core storage boiler in unheated space a) b),,85,2,0.75,194,,0,85,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,Not applicable,Dry core,Electric boiler,Electric dry core storage boiler in heated space a) b),,100,2,0.75,193,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,Unobtainable,Dry core,Electric boiler,Electric dry core storage boiler in heated space a) b),,100,2,0.75,193,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,Yes,Dry core,Electric boiler,Electric dry core storage boiler in heated space a) b),,100,2,0.75,193,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,No,Storage,Electric boiler,Electric water storage boiler in unheated space a) b),,85,2,0.75,196,,0,85,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,Not applicable,Storage,Electric boiler,Electric water storage boiler in heated space a) b),,100,2,0.75,195,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,Unobtainable,Storage,Electric boiler,Electric water storage boiler in heated space a) b),,100,2,0.75,195,rd,0,100,standard,notapplicable,electricity,FALSE
+Boiler,Peak electric,Yes,Storage,Electric boiler,Electric water storage boiler in heated space a) b),,100,2,0.75,195,rd,0,100,standard,notapplicable,electricity,FALSE

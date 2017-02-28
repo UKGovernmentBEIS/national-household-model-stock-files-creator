@@ -1,0 +1,4 @@
+watersys,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,winterefficiency,summerefficiency,waterheatingsystemtype,fluetype,mainheatingfuel,immersionheatertype
+electric immersion heater,HOT WATER SYSTEMS: Electric immersion,,100,,,903,rd,0,100,100,100,,notapplicable,electricity,single_coil
+instantaneous,HOT WATER SYSTEMS: Electric instantaneous at point of use,,100,,,909,rd,0,100,100,100,singlepoint,notapplicable,electricity,
+dedicated boiler,HOT WATER SYSTEMS: Electric instantaneous at point of use,,100,,,909,rd,0,100,100,100,singlepoint,notapplicable,electricity,
