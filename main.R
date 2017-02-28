@@ -48,6 +48,9 @@ option.england.build <- TRUE
 #' Whether to build the welsh stock - if false UK stock is not built
 option.wales.build <- TRUE
 
+#' Whether to document the stock creation process - if false documentation is not built
+option.documentation.build <- FALSE
+
 #' Whether to use the sedbuk lookup device
 option.ehs.spaceheating.sedbuk <- TRUE
 
@@ -121,13 +124,15 @@ if(option.scotland.build){
 
     make.zip.file(scotland.outputs, "scotland-shcs-11-13")
 
-    scotland.tests <- new.env()
-    rmarkdown::render("scotland/scotland-test-results.R", "pdf_document", envir = scotland.tests
+    if(option.documentation.build){
+        scotland.tests <- new.env()
+        rmarkdown::render("scotland/scotland-test-results.R", "pdf_document", envir = scotland.tests
                     ,output_dir = file.path(dirname(getwd()),"Reports"))
 
-    scotland.stockreport <- new.env()
-    rmarkdown::render("scotland/main.R", "pdf_document", envir = scotland.stockreport
+        scotland.stockreport <- new.env()
+        rmarkdown::render("scotland/main.R", "pdf_document", envir = scotland.stockreport
                      ,output_file = "Scotland-stock-creation-code.pdf")
+        }
 }
 
 ##  E N G L A N D ##
@@ -149,13 +154,15 @@ if(option.england.build){
 
     make.zip.file(england.outputs, "england-ehcs-2012")
 
-    england.tests <- new.env()
-    rmarkdown::render("ehcs/england-test-results.R", "pdf_document", envir = england.tests
+    if(option.documentation.build){
+        england.tests <- new.env()
+        rmarkdown::render("ehcs/england-test-results.R", "pdf_document", envir = england.tests
                     ,output_dir = file.path(dirname(getwd()),"Reports"))
 
-    england.stockreport <- new.env()
-    rmarkdown::render("ehcs/main.R", "pdf_document", envir = england.stockreport
+        england.stockreport <- new.env()
+        rmarkdown::render("ehcs/main.R", "pdf_document", envir = england.stockreport
                      ,output_file = "England_stock_creation_code.pdf")
+        }
 }
 
 ##  W A L E S ##
