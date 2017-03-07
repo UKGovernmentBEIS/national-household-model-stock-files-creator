@@ -3,6 +3,7 @@
 #' author: "Centre for Sustainable Energy"
 #' date: "2015"
 #' 
+#' #' Kieran adding edits March 2017
 
 library(Hmisc)
 library(memisc)
