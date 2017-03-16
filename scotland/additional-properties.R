@@ -6,7 +6,7 @@
 #' ---
 
 #'##Make and save additional-properties data
-#'Create a .csv file using the function make.additionalproperties, which creates a 
+#'Create a .csv file using the function make.additionalproperties, which creates a
 #'dataframe containing a complete set of populated variables for the additional-prope
 #'rties.csv stock file.
 #'
@@ -14,15 +14,15 @@
 #'the aacode field containing the survey code. However, additional field can be added
 #'to the file that can be called from scenarios in the NHM.
 #'
-#'Currently, the code here populates the additional-properties.csv file with seven 
-#'fields. These are SHCS raw variables and a corresponding renamed and recoded 
-#'variable to match variables and levels contained in the ehs. These recoded 
-#'variables are findisty (from  M3), hhcompx(from hhtype), dblglaz4 (from Q47) and 
+#'Currently, the code here populates the additional-properties.csv file with seven
+#'fields. These are SHCS raw variables and a corresponding renamed and recoded
+#'variable to match variables and levels contained in the ehs. These recoded
+#'variables are findisty (from  M3), hhcompx(from hhtype), dblglaz4 (from Q47) and
 #'wallinsx from five SHCS varieable describing the primary and secondary wall types.
 #'(these are not currently included in the file.)
 #'
 #' @param shcs - the scottish survey data
-#' 
+#'
 #' @param output - the path to the output file including the required file name and
 #' the extension .csv
 save.additionalproperties <- function(shcs, output) {
@@ -44,7 +44,7 @@ save.additionalproperties <- function(shcs, output) {
 make.additionalproperties <- function(shcs) {
   #creates a dataframe containing column names (word before the = sign) and a vector
   #to fill that column (vector after the = sign)
-    shcs.findisty <- get.findisty(shcs$M3) 
+    shcs.findisty <- get.findisty(shcs$M3)
     shcs.hhcompx <- get.hhcompx(shcs$hhtype)
     shcs.dblglaz4 <- get.dblglaz4(shcs$Q47)
     shcs.wallinsx <- get.wallinsx(shcs$Q2, shcs$Q8, shcs$Q10, shcs$Q11, shcs$Q17)
@@ -53,42 +53,20 @@ make.additionalproperties <- function(shcs) {
     shcs.Felpv <- get.Felpv(shcs$D8)
     shcs.Felsol <- get.Felsol(shcs$D9)
 
-  data.frame(aacode = shcs$uprn_new,
-            Farnatur = NA,
-            Felorien = NA,
-            Felcavff = NA,
-            Felcavlf = NA,
-            Felcavrf = NA,
-            Felcavbf = NA,
-            Felextff = NA,
-            Felextlf = NA,
-            Felextrf = NA,
-            Felextbf = NA,
-            Felpvff = NA,
-            Felpvlf = NA,
-            Felpvrf = NA,
-            Felpvbf = NA,
-            Felsolff = NA,
-            Felsollf = NA,
-            Felsolrf = NA,
-            Felsolbf = NA,
-            Felcav_shcs = shcs.Felcav,
-            Felext_shcs = shcs.Felext,
-            Felpv_shcs = shcs.Felpv,
-            Felsol_shcs = shcs.Felsol,
-            Findisty = shcs.findisty,
-            dblglaz4 = shcs.dblglaz4,
-            NRmsEHS = shcs$J1,
-            NRms2a = NA,
-            NRms4 = NA,
-            NRms5 = NA,
-            hhcompx = shcs.hhcompx,
-            imd1010 = NA,
-            wallinsx = shcs.wallinsx,
-            Felroofp = NA,
-            CERTpriority = NA,
-            WFG_preApr11 = NA,
-            sap09 = shcs$SAP2009_BRE)
+    data.frame(
+        aacode = shcs$uprn_new,
+        gasmop = NA,
+        elecmop = NA,
+        housingcosts = NA,
+        AHCIncomeEQ = NA,
+        AHCeqFactor = NA,
+        BHCeqFactor = NA,
+        FuelCosteqFactor = NA,
+        fpLIHCflg = NA,
+        fpLIHCqdt = NA,
+        fpLIHCgapEQ = NA,
+        fpLIHCgapUNEQ = NA
+    )
 }
 
 #' Map M3 to findisty; determine what distribution method is used by the main heating
@@ -106,7 +84,7 @@ get.findisty <- function(M3) {
       "Unobtainable" = "Unknown")))
 }
 
-#' 
+#'
 get.hhcompx <- function(hhtype) {
   as.factor(checked.revalue(
     hhtype,
@@ -123,7 +101,7 @@ get.hhcompx <- function(hhtype) {
 }
 
 
-#' @return a factor, with levels "no double glazing" "less than half" "more than 
+#' @return a factor, with levels "no double glazing" "less than half" "more than
 #' half" "entire house"
 get.dblglaz4 <- function(Q47) {
   dblglaz4 <- cut(Q47, c(0, 1, 4, 9, 10, 100),
@@ -150,10 +128,10 @@ get.dblglaz4 <- function(Q47) {
 get.wallinsx <- function(Q2, Q8, Q10, Q11, Q17) {
   # a column, which is true if we want the primary wall
   primary.wall <- Q10 >= 5
-  
+
   construction <- ifelse(primary.wall, levels(Q2)[Q2], levels(Q11)[Q11])
   insulation   <- ifelse(primary.wall, levels(Q8)[Q8], levels(Q17)[Q17])
-  
+
   ifelse(construction == "Cavity",
          # is it insulated?
          ifelse(insulation %in% "cavity",
@@ -186,4 +164,3 @@ get.Felpv <- function(D8) {
 get.Felsol <- function(D9) {
   ifelse(D9 > 0 & D9 <= 10, "Yes", "No")
 }
-
