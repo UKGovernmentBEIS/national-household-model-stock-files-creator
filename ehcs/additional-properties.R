@@ -36,7 +36,8 @@ make.additionalproperties <- function(allEntries) {
         fpLIHCflg = allEntries$fpLIHCflg,
         fpLIHCqdt = allEntries$fpLIHCqdt,
         fpLIHCgapEQ = allEntries$fpLIHCgapEQ,
-        fpLIHCgapUNEQ = allEntries$fpLIHCgapUNEQ
+        fpLIHCgapUNEQ = allEntries$fpLIHCgapUNEQ,
+        mainfuel = allEntries$mainfuel
     )
     print(paste("additional-properties DTO complete; number of records: ",
                 nrow(additional.properties)))

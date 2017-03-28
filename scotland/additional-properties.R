@@ -65,7 +65,8 @@ make.additionalproperties <- function(shcs) {
         fpLIHCflg = NA,
         fpLIHCqdt = NA,
         fpLIHCgapEQ = NA,
-        fpLIHCgapUNEQ = NA
+        fpLIHCgapUNEQ = NA,
+        mainfuel = NA
     )
 }
 
