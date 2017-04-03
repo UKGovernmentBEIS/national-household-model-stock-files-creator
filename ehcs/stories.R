@@ -282,6 +282,8 @@ is.basement <- function(frame, flat)
 #' @return a data frame containing several rows, one for each storey
 #'     of the house
 one.house.storeys <- function(frame, floors.total, start.floor) {
+    floors.total <- ifelse(tolower(frame$attic) == "yes", floors.total -1, floors.total)
+    
     ## this is just saying: for each integer from 1 to floors.total
     ## call make.one.floor(N, FALSE, start.floor, frame)
     ## and stick the results together in one frame.
