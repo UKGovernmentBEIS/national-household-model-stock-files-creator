@@ -409,7 +409,8 @@ scale.building.storeys <- function(result, target) {
 #' @param scale - if true, scale total area to floorarea in frame
 one.building.storeys <- function(frame, scale) {
     ## Find out if we are making a house
-    if (grepl("house", frame$dwtype8x)) {
+    if (is.a.house(frame$dwtype8x)) {
+    #if (grepl("house", frame$dwtype8x)) {
         ## so if we are making a house, we need to know how many storeys and
         ## whether there's a basement
         if (is.basement(frame, flat = FALSE)) {
