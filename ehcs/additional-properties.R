@@ -37,9 +37,14 @@ make.additionalproperties <- function(allEntries) {
         fpLIHCqdt = allEntries$fpLIHCqdt,
         fpLIHCgapEQ = allEntries$fpLIHCgapEQ,
         fpLIHCgapUNEQ = allEntries$fpLIHCgapUNEQ,
-        mainfuel = allEntries$mainfuel
+        mainfuel = allEntries$mainfuel,
+        offpeak = get.offpeakness(allEntries)
     )
     print(paste("additional-properties DTO complete; number of records: ",
                 nrow(additional.properties)))
     return(additional.properties)
+}
+
+get.offpeakness <- function(allEntries) {
+  grepl("peak",allEntries$mainfuel)
 }
