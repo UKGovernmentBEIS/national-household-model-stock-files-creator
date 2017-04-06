@@ -26,3 +26,5 @@ This is currently the most up to date housing survey for Wales. However, future 
 ## Scottish House Condition Survey
 The Scottish House Condition Survey is available on the [Scottish Government website]( http://www.scotland.gov.uk/Topics/Statistics/SHCS/DataAccess). However, this does not necessarily contain all the required variables to create a housing stock for the NHM and additional variables will need to be requested from the SHCS team. Details of how to request a Special Dataset can be found [here]( http://www.gov.scot/Topics/Statistics/16002/SpecialDatasets).
 
+## You aso need a file 'sedbuk-output.csv'for Scotland to do the boiler matching
+

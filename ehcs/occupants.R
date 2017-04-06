@@ -26,7 +26,7 @@ source("common.R", chdir=T)
 #' @param peopleEntries 
 
 occupants.make <- function(allEntries, peopleEntries){
-  surveyYear <- 2012
+  surveyYear <- 2014
   dateMovedIn <- ifelse(is.na(allEntries$lenres), NA, surveyYear - allEntries$lenres)
   dateMovedIn <- ifelse(is.na(dateMovedIn), "NULL", 
                         as.POSIXct(paste(c(dateMovedIn),c("01"),c("01"),sep = "-"), 

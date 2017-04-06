@@ -487,12 +487,12 @@ generate.all.storeys <- function(base.directory, output.file, scale) {
 
     big.data <- Reduce(join.aacode,
                        list(
-                           read.input("derived/detailed/dimensions_11plus12.sav"),
-                           read.input("derived/physical_11plus12.sav"),
-                           read.input("physical/shape.sav"),
-                           read.input("physical/flatdets.sav"),
-                           read.input("physical/interior.sav"),
-                           read.input("physical/services.sav")))
+                           read.input("derived/detailed/dimensions_13plus14_sl_protect.sav"),
+                           read.input("derived/physical_13plus14_sl_protect.sav"),
+                           read.input("physical/shape_sl_protect.sav"),
+                           read.input("physical/flatdets_sl_protect.sav"),
+                           read.input("physical/interior_sl_protect.sav"),
+                           read.input("physical/services_sl_protect.sav")))
 
     ## for speed, retain only the variables we are actually using
     ## and make a data.table rather than a data.frame.

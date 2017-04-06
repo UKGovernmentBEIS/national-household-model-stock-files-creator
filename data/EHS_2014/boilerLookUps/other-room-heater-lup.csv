@@ -2,7 +2,7 @@ Finchtyp,Finmhfue,Heating System Type,Heating System,Flue,Efficiency,Heating_typ
 Room heaters,Solid fuel - coal,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,60,60,room_heater,openflue,house_coal,FALSE,
 Room heaters,Solid fuel - smokeless fuel,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,60,60,room_heater,openflue,house_coal,FALSE,
 Room heaters,Solid fuel - anthracite,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,60,60,room_heater,openflue,house_coal,FALSE,
-Room heaters,Solid fuel - wood,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,60,60,room_heater,openflue,biomass_wood,FALSE,
+Room heaters,Biomass,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,60,60,room_heater,openflue,biomass_wood,FALSE,
 Room heaters,Electricity - standard,Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,100,100,room_heater,notapplicable,electricity,FALSE,
 Room heaters,Electricity - 7hr tariff,Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,100,100,room_heater,notapplicable,electricity,FALSE,
 Room heaters,Electricity - 10hr tariff,Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,100,100,room_heater,notapplicable,electricity,FALSE,

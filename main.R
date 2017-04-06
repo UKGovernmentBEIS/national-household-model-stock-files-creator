@@ -1,7 +1,7 @@
 #' ---
 #' title: "R Stock Conversion"
 #' author: "Centre for Sustainable Energy"
-#' date: "2015"
+#' date: "2015" 2017 update
 #' 
 
 library(Hmisc)
@@ -40,13 +40,16 @@ option.ehs.spaceheating.lookups <- c(
 )
 
 #' Whether to build the scotland stock - if false UK stock is not built
-option.scotland.build <- TRUE
+option.scotland.build <- T
 
 #' Whether to build the english stock - if false UK stock is not built
-option.england.build <- TRUE
+option.england.build <- T
 
 #' Whether to build the welsh stock - if false UK stock is not built
-option.wales.build <- TRUE
+option.wales.build <- T
+
+#' Whether to document the stock creation process - if false documentation is not built
+option.documentation.build <- F
 
 #' Whether to document the stock creation process - if false documentation is not built
 option.documentation.build <- FALSE
@@ -63,36 +66,37 @@ option.generate.summaries <- FALSE
 
 #' Whether to scale the total floor area of the storeys produced for a house
 #' to match the EHS variable FloorArea from derived/dimensions.sav
-option.ehs.storeys.scale <- FALSE
+option.ehs.storeys.scale <- T
 
 #' A string to prefix the name of stock files with
-option.stock.name.prefix <- "default-"
+#' Add a test in here so if we set scaled to TRUE it calls the stock Scaled, OTHERWISE calls it Unscaled
+option.stock.name.prefix <- "scaled-"
 
 imputation.schema.path <- file.path(getwd(), "data", "imputation-schema.xlsx")
 
 summary.main.path <- file.path(getwd(), "summary", "main.Rmd")
 
 summarise.stock.file <- function(stock.name) {
-    stock.path <- getwd()
-    rmarkdown::render(summary.main.path, "pdf_document", envir = new.env(),
-                      output_dir = getwd(),
-                      output_file = paste(stock.name, "-summary.pdf", sep=""))
+  stock.path <- getwd()
+  rmarkdown::render(summary.main.path, "pdf_document", envir = new.env(),
+                    output_dir = getwd(),
+                    output_file = paste(stock.name, "-summary.pdf", sep=""))
 }
 
 make.zip.file <- function(path, name) {
-    name <- paste(option.stock.name.prefix, name, sep="")
-    ## copy the imputation schema into place
-    file.copy(imputation.schema.path, path)
-    ## make the zip file
-    wd <- getwd()
-    setwd(path)
-    zname <- paste(name, ".zip", sep="")
-    if (file.exists(zname)) unlink(zname)
-
-    zip(zname,
-        files=list.files(".", pattern="(\\.csv|\\.xlsx)$"))
-    if (option.generate.summaries) summarise.stock.file(name)
-    setwd(wd)
+  name <- paste(option.stock.name.prefix, name, sep="")
+  ## copy the imputation schema into place
+  file.copy(imputation.schema.path, path)
+  ## make the zip file
+  wd <- getwd()
+  setwd(path)
+  zname <- paste(name, ".zip", sep="")
+  if (file.exists(zname)) unlink(zname)
+  
+  zip(zname,
+      files=list.files(".", pattern="(\\.csv|\\.xlsx)$"))
+  if (option.generate.summaries) summarise.stock.file(name)
+  setwd(wd)
 }
 
 erase.dto.files <- function(path) unlink(list.files(path, full.names=T, pattern="(\\.csv|\\.xlsx)$"))
@@ -110,29 +114,29 @@ outputs <- file.path(getwd(), "outputs")
 scotland.outputs <- file.path(outputs, "scotland")
 print(paste("Skipping Scotland=", !option.scotland.build))
 if(option.scotland.build){
-    erase.dto.files(scotland.outputs)
-
-                                        # Create output folder if does not exist
-    if (file_test("-d",scotland.outputs) == FALSE){
-        dir.create(scotland.outputs, recursive=T)
-    }
-    scotland <- new.env()
-    scotland.survey <- file.path(getwd(), "data/SHCS_11-13/external_cse_data.sav")
-    sys.source("scotland/main.R", envir=scotland, chdir=T)
-    with(scotland,
-         make.scotland(scotland.survey, scotland.outputs))
-
-    make.zip.file(scotland.outputs, "scotland-shcs-11-13")
-
-    if(option.documentation.build){
-        scotland.tests <- new.env()
-        rmarkdown::render("scotland/scotland-test-results.R", "pdf_document", envir = scotland.tests
-                    ,output_dir = file.path(dirname(getwd()),"Reports"))
-
-        scotland.stockreport <- new.env()
-        rmarkdown::render("scotland/main.R", "pdf_document", envir = scotland.stockreport
-                     ,output_file = "Scotland-stock-creation-code.pdf")
-        }
+  erase.dto.files(scotland.outputs)
+  
+  # Create output folder if does not exist
+  if (file_test("-d",scotland.outputs) == FALSE){
+    dir.create(scotland.outputs, recursive=T)
+  }
+  scotland <- new.env()
+  scotland.survey <- file.path(getwd(), "data/SHCS_11-13/external_cse_data.sav")
+  sys.source("scotland/main.R", envir=scotland, chdir=T)
+  with(scotland,
+       make.scotland(scotland.survey, scotland.outputs))
+  
+  make.zip.file(scotland.outputs, "scotland-shcs-11-13")
+  
+  if(option.documentation.build){
+    scotland.tests <- new.env()
+    rmarkdown::render("scotland/scotland-test-results.R", "pdf_document", envir = scotland.tests
+                      ,output_dir = file.path(dirname(getwd()),"Reports"))
+    
+    scotland.stockreport <- new.env()
+    rmarkdown::render("scotland/main.R", "pdf_document", envir = scotland.stockreport
+                      ,output_file = "Scotland-stock-creation-code.pdf")
+  }
 }
 
 ##  E N G L A N D ##
@@ -141,68 +145,68 @@ if(option.scotland.build){
 england.outputs <- file.path(outputs, "england")
 print(paste("Skipping England=", !option.england.build))
 if(option.england.build){
-    erase.dto.files(england.outputs)
-                                        # Create output folder if does not exist
-    if (file_test("-d",england.outputs) == FALSE){
-        dir.create(england.outputs, recursive=T)
-    }
-    england <- new.env()
-    path.to.ehcs <- file.path(getwd(), "data/EHS_2012")
-    sys.source("ehcs/main.R", envir=england, chdir=T)
-    with(england, 
-         make.stock(path.to.ehcs, england.outputs))
-
-    make.zip.file(england.outputs, "england-ehcs-2012")
-
-    if(option.documentation.build){
-        england.tests <- new.env()
-        rmarkdown::render("ehcs/england-test-results.R", "pdf_document", envir = england.tests
-                    ,output_dir = file.path(dirname(getwd()),"Reports"))
-
-        england.stockreport <- new.env()
-        rmarkdown::render("ehcs/main.R", "pdf_document", envir = england.stockreport
-                     ,output_file = "England_stock_creation_code.pdf")
-        }
+  erase.dto.files(england.outputs)
+  # Create output folder if does not exist
+  if (file_test("-d",england.outputs) == FALSE){
+    dir.create(england.outputs, recursive=T)
+  }
+  england <- new.env()
+  path.to.ehcs <- file.path(getwd(), "data/EHS_2014")
+  sys.source("ehcs/main.R", envir=england, chdir=T)
+  with(england, 
+       make.stock(path.to.ehcs, england.outputs))
+  
+  make.zip.file(england.outputs, "england-ehcs-2014")
+  
+  if(option.documentation.build){
+    england.tests <- new.env()
+    rmarkdown::render("ehcs/england-test-results.R", "pdf_document", envir = england.tests
+                      ,output_dir = file.path(dirname(getwd()),"Reports"))
+    
+    england.stockreport <- new.env()
+    rmarkdown::render("ehcs/main.R", "pdf_document", envir = england.stockreport
+                      ,output_file = "England_stock_creation_code.pdf")
+  }
 }
 
 ##  W A L E S ##
 wales.outputs <- file.path(outputs, "wales")
 if(option.wales.build){
-    erase.dto.files(wales.outputs)
-
-    # Create output folder if does not exist
-    if (file_test("-d",wales.outputs) == FALSE){
-        dir.create(wales.outputs, recursive=T)
-    }
-
-    wales <- new.env()
-    path.to.wales <- file.path(getwd(), "data/LiW-2008")
-    sys.source("wales/main.R", envir = wales, chdir = T)
-    with(wales, 
-     make.wales(path.to.wales, wales.outputs))
-    make.zip.file(wales.outputs, "wales-ehcs-2012")
-    print("Wales stock zip created")
+  erase.dto.files(wales.outputs)
+  
+  # Create output folder if does not exist
+  if (file_test("-d",wales.outputs) == FALSE){
+    dir.create(wales.outputs, recursive=T)
+  }
+  
+  wales <- new.env()
+  path.to.wales <- file.path(getwd(), "data/LiW-2008")
+  sys.source("wales/main.R", envir = wales, chdir = T)
+  with(wales, 
+       make.wales(path.to.wales, wales.outputs))
+  make.zip.file(wales.outputs, "wales-ehcs-2014")
+  print("Wales stock zip created")
 }
 
 ## COMBINED ALL STOCK AND CREATE A UK STOCK (WAITING FOR NORTHERN IRELAND) ##
 can.make.uk <- option.scotland.build & option.england.build & option.wales.build
 print(paste("Skipping Full UK Stock=", !can.make.uk))
 if(can.make.uk){
-    #+ warning = FALSE, message = FALSE, comment = NA
-    uk.outputs <- file.path(outputs, "uk")
-    erase.dto.files(uk.outputs)
-
-
-    # Create output folder if does not exist
-    if (file_test("-d",uk.outputs) == FALSE){
-        dir.create(uk.outputs, recursive=T)
-    }
-
-    uk <- new.env()
-    sys.source("combinestock.R", envir=uk, chdir=T)
-
-    with(uk,
-         make.uk(scotland.outputs,england.outputs,wales.outputs,uk.outputs))
-
-    make.zip.file(uk.outputs, "default")
+  #+ warning = FALSE, message = FALSE, comment = NA
+  uk.outputs <- file.path(outputs, "uk")
+  erase.dto.files(uk.outputs)
+  
+  
+  # Create output folder if does not exist
+  if (file_test("-d",uk.outputs) == FALSE){
+    dir.create(uk.outputs, recursive=T)
+  }
+  
+  uk <- new.env()
+  sys.source("combinestock.R", envir=uk, chdir=T)
+  
+  with(uk,
+       make.uk(scotland.outputs,england.outputs,wales.outputs,uk.outputs))
+  
+  make.zip.file(uk.outputs, "GB-stock")
 }

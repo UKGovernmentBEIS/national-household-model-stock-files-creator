@@ -215,13 +215,13 @@ installation.year <- function(spaceHeatingType, backBoilerAge, boilerAge, buildY
   return (calcBoilerAge)
 }
 
-#' Returns either the survey year 2012 - age of boiler or if age of boiler is 88 or 
+#' Returns either the survey year 2014 - age of boiler or if age of boiler is 88 or 
 #' na then build year of the property
 #'
 #'@param age - of boiler
 #'@param buildYear - of house case
 age.or.buildYear <- function(age, buildYear){
-  boilerAge <- ifelse(is.na(age) | age == 88, buildYear, 2012 - age)
+  boilerAge <- ifelse(is.na(age) | age == 88, buildYear, 2014 - age)
   return(boilerAge)
 }
 
@@ -238,7 +238,8 @@ electricity.tariff <- function(Finmhfue){
       "Solid fuel - coal" = "NULL",
       "Solid fuel - smokeless fuel" = "NULL",
       "Solid fuel - anthracite" = "NULL",
-      "Solid fuel - wood" = "NULL",
+      #"Solid fuel - wood" = "NULL",
+      "Biomass" = "NULL", #CMT - fuel variable name changed
       "Electricity - standard" = "FLAT_RATE",
       "Electricity - 7hr tariff" = "ECONOMY_7",
       "Electricity - 10hr tariff" = "ECONOMY_10",
@@ -372,18 +373,18 @@ secondary.heating.type.lookup <- function(FINOHTYP){
   as.factor(checked.revalue(
     FINOHTYP,c(
       "Mains gas - open flue" = "GAS_FIRE_OPEN_FLUE"
-      ,"Mains gas - balances flue" = "GAS_FIRE"
+      ,"Mains gas - balanced flue" = "GAS_FIRE"
       ,"Mains gas - fan assisted"  = "GAS_FIRE"
-      ,"Mains gas - condensing" =  "GAS_FIRE"               
-      ,"Mains gas - live effect - sealed to chim" = "GAS_COAL_EFFECT_FIRE"
-      ,"Mains gas - live effect - fan assisted f" = "GAS_COAL_EFFECT_FIRE"
+      ,"Mains gas - condensing" =  "GAS_FIRE"                
+      ,"Mains gas - live effect - sealed to chimney" = "GAS_COAL_EFFECT_FIRE"
+      ,"Mains gas - live effect - fan assisted flue" = "GAS_COAL_EFFECT_FIRE"
       ,"Mains gas - decorative - open to chimney" = "GAS_COAL_EFFECT_FIRE"
       ,"Mains gas - flueless" = "GAS_FIRE_FLUELESS"          
       ,"Mains gas - unknown" = "GAS_FIRE_FLUELESS"
       ,"LPG - fixed heaters" = "GAS_FIRE"
-      ,"Electric heaters - panel/convector or ra" = "ELECTRIC_ROOM_HEATERS"
+      ,"Electric heaters - panel/convector or radiant" = "ELECTRIC_ROOM_HEATERS"
       ,"Electric heaters - portable" = "ELECTRIC_ROOM_HEATERS"
-      ,"Electric heaters - individual storage he" = "ELECTRIC_ROOM_HEATERS"
+      ,"Electric heaters - individual storage heater" = "ELECTRIC_ROOM_HEATERS"
       ,"Solid fuel heaters - open fire" = "OPEN_FIRE"
       ,"Solid fuel heaters - stove/space heater" = "OPEN_FIRE"
       ,"Paraffin - portable heaters" = "GAS_FIRE" 
@@ -445,7 +446,8 @@ sedbuk.fuelType <- function(Finmhfue){
       "Solid fuel - coal" = "NULL",
       "Solid fuel - smokeless fuel" = "NULL",
       "Solid fuel - anthracite" = "NULL",
-      "Solid fuel - wood" = "NULL",
+      #"Solid fuel - wood" = "NULL",
+      "Biomass" = "NULL",   #CMT - fuel variable name changed
       "Electricity - standard" = "NULL",
       "Electricity - 7hr tariff" = "NULL",
       "Electricity - 10hr tariff" = "NULL",
@@ -465,7 +467,8 @@ nhm.fuelType <- function(Finmhfue){
       "Solid fuel - coal" = "HOUSE_COAL",
       "Solid fuel - smokeless fuel" = "HOUSE_COAL",
       "Solid fuel - anthracite" = "HOUSE_COAL",
-      "Solid fuel - wood" = "BIOMASS_WOOD",
+      #"Solid fuel - wood" = "BIOMASS_WOOD",
+      "Biomass" = "BIOMASS_WOOD",    #CMT - fuel variable name changed
       "Electricity - standard" = "ELECTRICITY",
       "Electricity - 7hr tariff" = "ELECTRICITY",
       "Electricity - 10hr tariff" = "ELECTRICITY",

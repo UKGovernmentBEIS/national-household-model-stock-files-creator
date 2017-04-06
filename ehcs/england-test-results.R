@@ -26,7 +26,7 @@ source("test_functions.R")
 source("main.R")
 
 #england.outputs <- file.path(dirname(getwd()), "outputs","scotland")
-#path.to.ehcs <- file.path(getwd(), "data/EHS_2012")
+#path.to.ehcs <- file.path(getwd(), "data/EHS_2014")
 
 ehs <- merge.all.sav.files(path.to.ehcs)
 

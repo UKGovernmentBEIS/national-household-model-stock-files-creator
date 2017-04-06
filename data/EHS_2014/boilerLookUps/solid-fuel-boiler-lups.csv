@@ -5,5 +5,5 @@ Central heating (wet with rads),Solid fuel - smokeless fuel,Standard,Auto (gravi
 Central heating (wet with rads),Solid fuel - smokeless fuel,Back boiler,Closed roomheater with boiler to radiators,,65,3,0.5,158,rd,0,65,65,65,standard,balanced_flue,house_coal,FALSE,
 Central heating (wet with rads),Solid fuel - anthracite,Standard,Auto (gravity) feed independent boiler in heated space,,65,2,0.75,153,,0,65,65,65,standard,balanced_flue,house_coal,FALSE,
 Central heating (wet with rads),Solid fuel - anthracite,Back boiler,Closed roomheater with boiler to radiators,,65,3,0.5,158,rd,0,65,65,65,standard,balanced_flue,house_coal,FALSE,
-Central heating (wet with rads),Solid fuel - wood,Standard,Wood chip/pellet independent boiler,,63,2,0.75,155,,0,63,63,63,standard,balanced_flue,biomass_pellets,FALSE,
-Central heating (wet with rads),Solid fuel - wood,Back boiler,Closed roomheater with boiler to radiators,,63,2,0.75,155,,0,63,63,63,standard,balanced_flue,biomass_pellets,FALSE,
+Central heating (wet with rads),Biomass,Standard,Wood chip/pellet independent boiler,,63,2,0.75,155,,0,63,63,63,standard,balanced_flue,biomass_pellets,FALSE,
+Central heating (wet with rads),Biomass,Back boiler,Closed roomheater with boiler to radiators,,63,2,0.75,155,,0,63,63,63,standard,balanced_flue,biomass_pellets,FALSE,

@@ -10,7 +10,7 @@
 #' TODO: ADD WEIGHTS TO THE REPORTING TABLES
 #' 
 test.xtab <- function(ehs, nhm.data, ehs.value, dto.value) {
-  ehs <- data.frame(aacode = ehs$aacode, weight = ehs$aagpd1112, ehs.value = ehs.value)
+  ehs <- data.frame(aacode = ehs$aacode, weight = ehs$aagpd1314, ehs.value = ehs.value)
   nhm.data <- data.frame(aacode = nhm.data$aacode, dto.value = dto.value)
   merged <- merge(ehs, nhm.data)
   crosstab <- ddply(merged, .(ehs.value, dto.value), summarize, unweighted.cases.count = length(aacode), weighted.count = round(sum(weight),0))
@@ -121,7 +121,7 @@ test.region <- function(ehs, cases) {
   test.xtab(
     ehs,
     cases,
-    ehs$GorEHS,
+    ehs$gorEHS,
     cases$regiontype)
 }
 
