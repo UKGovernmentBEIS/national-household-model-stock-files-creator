@@ -409,7 +409,7 @@ scale.building.storeys <- function(result, target) {
 #' @param scale - if true, scale total area to floorarea in frame
 one.building.storeys <- function(frame, scale) {
     ## Find out if we are making a house
-    if (is.a.house(frame$dwtype8x) == TRUE) {
+    if (is.a.house(frame$dwtype8x) == FALSE) {
     #if (grepl("house", frame$dwtype8x)) {
         ## so if we are making a house, we need to know how many storeys and
         ## whether there's a basement
@@ -507,7 +507,6 @@ generate.all.storeys <- function(base.directory, output.file, scale) {
     )]
 
     big.data <- data.table(big.data)
-    big.data <- big.data[aacode == "J0011202"]
 
     setkey(big.data, "aacode")
 
