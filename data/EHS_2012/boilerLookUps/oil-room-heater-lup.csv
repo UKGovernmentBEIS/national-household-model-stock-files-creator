@@ -1,5 +1,0 @@
-Finchtyp,Finmhfue,sysage,Heating System Type,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,winterefficiency,summerefficiency,spaceheatingsystemtype,fluetype,mainheatingfuel,iscondensing,installationyear,storageheatertype
-Room heaters,Oil,more than 12 years,Room heater,"Oil Room heater, pre 2000",OF,55,1,1,621,rd,0,55,55,55,room_heater,openflue,oil,FALSE,,
-Room heaters,Oil,less than 3 years,Room heater,"Oil Room heater, 2000 or later",OF,60,1,1,623,rd,0,60,60,60,room_heater,openflue,oil,FALSE,,
-Room heaters,Oil,3-12 years,Room heater,"Oil Room heater, 2000 or later",OF,60,1,1,623,rd,0,60,60,60,room_heater,openflue,oil,FALSE,,
-Room heaters,Oil,missing,Room heater,"Oil Room heater, pre 2000",OF,55,1,1,621,rd,0,55,55,55,room_heater,openflue,oil,FALSE,,
