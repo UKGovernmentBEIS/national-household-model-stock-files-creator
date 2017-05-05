@@ -93,8 +93,8 @@ make.stock <- function(path.to.ehcs, path.to.output) {
 
   print("Core DTO's saved, saving additional properties and logs to csv...")
   
-  save.dto(additionalpropertiesDTO, file.path(path.to.output, 
-                                              "additional-properties.csv"))
+  #save.dto(additionalpropertiesDTO, file.path(path.to.output, 
+   #                                           "additional-properties.csv"))
   save.eng_IImportLogDTO(IImportLogDTO, file.path(path.to.output, "IImportLogDTO.csv"))
   save.eng_IStockImportMetadataDTO(IStockImportMetadataDTO, 
                             file.path(path.to.output, "IStockImportMetadataDTO.csv"))
@@ -117,7 +117,7 @@ merge.all.sav.files <- function(path.to.ehcs){
   
   #' Now merge all other spss files that should have just one entry for each house case
   toMerge <- Reduce(function(a, b){
-    join(a,b, by = "aacode")
+    merge(a,b, by = "aacode",all.x=T)
   },Map(function(name){
        read.spss.with.aacode(file.path(path.to.ehcs, name))
   }, c("physical/firstimp_ps_sl_protect.sav",

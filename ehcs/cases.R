@@ -349,7 +349,7 @@ groundfloor.construction.type <- function(hasSolidKitchenFloor, hasSolidLivingRo
 #' numHabitalRooms - uses supplied value as is
 #' numOfBedrooms - always returns zero TODO: don't know why?
 #'
-#'@param numOfHabitalRooms - FINROOMS (interior)
+#'@param numOfHabitalRooms - FINROOMS (interior) - nope
 #'@param livingRoomWidth - FINLIVWI (interior) in meters
 #'@param livingRoomDepth - FINLIVDE (interior) in meters
 #'@param totalFloorArea - FLOORARE (dimensions) in meters
@@ -369,9 +369,7 @@ cal.livingarea.data <- function(numOfHabitalRooms, livingRoomWidth,
                           (calc_livingRoomWidth * calc_livingRoomDepth)/ totalFloorArea)
   
   data <- data.frame(
-    livingAreaFaction = 0, #calc_livingAreaFaction, # this is not deliberate, but instead a decision taken since
-    # there seems to be an error with the living area fraction calaculation and it won't run, sothis is a necessary step.
-    # it also aligns the stock better with BRE's pproach for LAF, but this isn't the reason I've done it here
+    livingAreaFaction = calc_livingAreaFaction,
     numHabitalRooms = ifelse(is.na(numOfHabitalRooms), 0, numOfHabitalRooms),
     numOfBedrooms = 0)
   
