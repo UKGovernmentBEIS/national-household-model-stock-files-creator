@@ -44,7 +44,7 @@ cases.make <- function(allEntries) {
                                allEntries$ndepchild)
   
   living.area.data <- cal.livingarea.data(allEntries$Finrooms,allEntries$Finlivwi,
-                                          allEntries$Finlivde,allEntries$FloorArea)
+                                          allEntries$Finlivde,allEntries$FloorArea.y)
   
   # Construct a data-frame for each house case
   cases <- data.frame(
