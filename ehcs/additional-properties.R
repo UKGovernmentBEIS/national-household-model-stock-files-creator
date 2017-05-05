@@ -53,6 +53,8 @@ make.additionalproperties <- function(allEntries) {
                                     NRms2a = allEntries$NRms2a,
                                     NRms4 = allEntries$NRms4,
                                     NRms5 = allEntries$NRms5,
+									lenres2=allEntries$lenres2,		#CMT added asleresis onyl available for half the years. Eventualy we wat a proper fix which maps lenresb
+									AWEligible = allEntries$ECO_AW,	#CMT Needs tobe changedt map the various values to either TRUE or FALSE
                                     hhcompx = allEntries$hhcompx,
                                     imd1010 = allEntries$imd1010,   #CMT - corrected spelling to EHS 2014 data for imd1010 variable in allEntries df - changed i to lower case
                                     wallinsy = allEntries$wallinsy,  #CMT - replaced wallinsx with wallinsy, the equivalent variable in EHS2014

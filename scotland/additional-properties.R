@@ -82,6 +82,8 @@ make.additionalproperties <- function(shcs) {
             NRms2a = NA,
             NRms4 = NA,
             NRms5 = NA,
+			lenres2= NA,	#CMT addedtoenale GB stock to knit together
+			AWEligible = NA,	#CMT addedtoenale GB stock to knit together
             hhcompx = shcs.hhcompx,
             imd1010 = NA,
             wallinsy = shcs.wallinsx, #CMT - replaced wallinsx with wallinsy, the equivalent variable in EHS2014 (to match England)

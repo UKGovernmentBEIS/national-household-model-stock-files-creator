@@ -18,7 +18,7 @@ make.wales <- function(path.to.wales, output.dir) {
     ## effect.
 
     total.current.weight <- sum(weighted.wales.data$weight)
-    target.weight <- total.current.weight * 1.0251
+    target.weight <- total.current.weight * 1.0332
     delta.weight <- target.weight - total.current.weight
     subpopulation <- !is.na(weighted.wales.data$buildyear) &
         (weighted.wales.data$buildyear >= 2000) # this 2000 lets you
