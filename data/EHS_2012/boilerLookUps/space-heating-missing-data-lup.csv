@@ -1,0 +1,18 @@
+heat4x,heat7x,mainfuel,Heating System Type,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,winterefficiency,summerefficiency,spaceheatingsystemtype,storageheatertype,fluetype,mainheatingfuel,iscondensing
+storage heater,storage radiators,electricity (7 hr. on peak),,ELECTRIC STORAGE SYSTEMS Off-peak tariffs: Modern (slimline) storage heaters,,100,4,0.25,402,rd,0,100,100,100,storage_heater,slimline,notapplicable,electricity,FALSE
+storage heater,storage radiators,electricity (7 hr. off peak),,ELECTRIC STORAGE SYSTEMS Off-peak tariffs: Modern (slimline) storage heaters,,100,4,0.25,402,rd,0,100,100,100,storage_heater,slimline,notapplicable,electricity,FALSE
+storage heater,storage radiators,electricity (standard tariff),,ELECTRIC STORAGE SYSTEMS Off-peak tariffs: Modern (slimline) storage heaters,,100,4,0.25,402,rd,0,100,100,100,storage_heater,slimline,notapplicable,electricity,FALSE
+storage heater,storage radiators,electricity (10 hr. on peak),,ELECTRIC STORAGE SYSTEMS Off-peak tariffs: Modern (slimline) storage heaters,,100,4,0.25,402,rd,0,100,100,100,storage_heater,slimline,notapplicable,electricity,FALSE
+storage heater,storage radiators,electricity (10 hr. off peak),,ELECTRIC STORAGE SYSTEMS Off-peak tariffs: Modern (slimline) storage heaters,,100,4,0.25,402,rd,0,100,100,100,storage_heater,slimline,notapplicable,electricity,FALSE
+storage heater,storage radiators,electricity (24 hr heating tariff),,ELECTRIC STORAGE SYSTEMS Off-peak tariffs: Modern (slimline) storage heaters,,100,4,0.25,402,rd,0,100,100,100,storage_heater,slimline,notapplicable,electricity,FALSE
+fixed room heating,room heater ,house coal,,Closed room heater,OF,60,3,0.5,633,rd,0,60,60,60,room_heater,,openflue,house_coal,FALSE
+fixed room heating,room heater ,smokeless fuel,,Closed room heater,OF,60,3,0.5,633,rd,0,60,60,60,room_heater,,openflue,house_coal,FALSE
+fixed room heating,room heater ,anthracite nuts,,Closed room heater,OF,60,3,0.5,633,rd,0,60,60,60,room_heater,,openflue,house_coal,FALSE
+fixed room heating,room heater ,anthracite grains,,Closed room heater,OF,60,3,0.5,633,rd,0,60,60,60,room_heater,,openflue,house_coal,FALSE
+fixed room heating,room heater ,wood,,Closed room heater,OF,60,3,0.5,633,rd,0,60,60,60,room_heater,,openflue,biomass_wood,FALSE
+fixed room heating,room heater ,electricity (7 hr. on peak),Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,100,100,room_heater,,notapplicable,electricity,FALSE
+fixed room heating,room heater ,electricity (7 hr. off peak),Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,100,100,room_heater,,notapplicable,electricity,FALSE
+fixed room heating,room heater ,electricity (standard tariff),Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,100,100,room_heater,,notapplicable,electricity,FALSE
+fixed room heating,room heater ,electricity (10 hr. on peak),Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,100,100,room_heater,,notapplicable,electricity,FALSE
+fixed room heating,room heater ,electricity (10 hr. off peak),Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,100,100,room_heater,,notapplicable,electricity,FALSE
+fixed room heating,room heater ,electricity (24 hr heating tariff),Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,100,100,room_heater,,notapplicable,electricity,FALSE

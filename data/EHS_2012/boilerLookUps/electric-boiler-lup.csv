@@ -1,0 +1,9 @@
+Finchtyp,Finmhfue,Finmhboi,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,winterefficiency,summerefficiency,spaceheatingsystemtype,fluetype,mainheatingfuel,iscondensing,storageheatertype
+Central heating (wet with rads),Electricity - standard,Standard,Direct acting electric boiler,,100,1,1,191,rd,0,100,100,100,standard,notapplicable,electricity,FALSE,
+Central heating (wet with rads),Electricity - 7hr tariff,Standard,Electric dry core storage boiler in heated space a) b),,100,2,0.75,193,rd,0,100,100,100,standard,notapplicable,electricity,FALSE,
+Central heating (wet with rads),Electricity - 10hr tariff,Standard,Electric dry core storage boiler in heated space a) b),,100,2,0.75,193,rd,0,100,100,100,standard,notapplicable,electricity,FALSE,
+Central heating (wet with rads),Electricity - 24hr tariff,Standard,Electric dry core storage boiler in heated space a) b),,100,2,0.75,193,rd,0,100,100,100,standard,notapplicable,electricity,FALSE,
+Central heating (wet with rads),Electricity - standard,Combined primary storage unit,Electric CPSU in heated space a) ﾖ radiators or underfloor,,100,2,0.75,192,rd,0,100,100,100,standard,notapplicable,electricity,FALSE,
+Central heating (wet with rads),Electricity - 7hr tariff,Combined primary storage unit,Electric CPSU in heated space a) ﾖ radiators or underfloor,,100,2,0.75,192,rd,0,100,100,100,standard,notapplicable,electricity,FALSE,
+Central heating (wet with rads),Electricity - 10hr tariff,Combined primary storage unit,Electric CPSU in heated space a) ﾖ radiators or underfloor,,100,2,0.75,192,rd,0,100,100,100,standard,notapplicable,electricity,FALSE,
+Central heating (wet with rads),Electricity - 24hr tariff,Combined primary storage unit,Electric CPSU in heated space a) ﾖ radiators or underfloor,,100,2,0.75,192,rd,0,100,100,100,standard,notapplicable,electricity,FALSE,

@@ -1,0 +1,5 @@
+watersys,Finwsity,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,winterefficiency,summerefficiency,waterheatingsystemtype,fluetype,mainheatingfuel,immersionheatertype
+electric immersion heater,Standard,HOT WATER SYSTEMS: Electric immersion,,100,,,903,rd,0,100,100,100,,notapplicable,electricity,single_coil
+electric immersion heater,7hr tariff,HOT WATER SYSTEMS: Electric immersion,,100,,,903,rd,0,100,100,100,,notapplicable,electricity,single_coil
+electric immersion heater,10hr tariff,HOT WATER SYSTEMS: Electric immersion,,100,,,903,rd,0,100,100,100,,notapplicable,electricity,single_coil
+electric immersion heater,24hr tariff,HOT WATER SYSTEMS: Electric immersion,,100,,,903,rd,0,100,100,100,,notapplicable,electricity,single_coil

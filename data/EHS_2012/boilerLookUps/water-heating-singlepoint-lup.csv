@@ -1,0 +1,6 @@
+watersys,Finwspty,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,winterefficiency,summerefficiency,waterheatingsystemtype,fluetype,mainheatingfuel
+instantaneous,Mains gas,HOT WATER SYSTEMS: Single-point gas water heater (instantaneous at point of use),,70,,,907,rd,0,70,70,70,singlepoint,,mains_gas
+instantaneous,Bulk LPG,HOT WATER SYSTEMS: Single-point gas water heater (instantaneous at point of use),,70,,,907,rd,1,70,70,70,singlepoint,,bulk_lpg
+instantaneous,Bottled gas,HOT WATER SYSTEMS: Single-point gas water heater (instantaneous at point of use),,70,,,907,rd,2,70,70,70,singlepoint,,bottled_lpg
+instantaneous,Oil,HOT WATER SYSTEMS: Oil boiler/circulator for water heating only,,70,,,912,,0,70,70,70,standard_boiler,,oil
+instantaneous,Standard,HOT WATER SYSTEMS: Electric instantaneous at point of use,,100,,,909,rd,0,100,100,100,singlepoint,notapplicable,electricity

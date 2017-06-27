@@ -1,0 +1,63 @@
+M2,M5,M15,Heating System Type,Heating System,Flue,Efficiency,Heating_type,Responsiveness(R),HeatCode_4a,Rd_SAP,Tariff,basicefficiency,spaceheatingsystemtype,fluetype,mainheatingfuel,iscondensing
+Room heater,House coal,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,house_coal,FALSE
+Room heater,House coal,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,house_coal,FALSE
+Room heater,Smokeless fuel,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,house_coal,FALSE
+Room heater,Smokeless fuel,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,house_coal,FALSE
+Room heater,Antracite nuts and grain,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,house_coal,FALSE
+Room heater,Antracite nuts and grain,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,house_coal,FALSE
+Room heater,Dual fuel,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,house_coal,FALSE
+Room heater,Dual fuel,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,house_coal,FALSE
+Room heater,Wood chips,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,biomass_woodchip,FALSE
+Room heater,Wood chips,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,biomass_woodchip,FALSE
+Room heater,Wood logs,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,biomass_wood,FALSE
+Room heater,Wood logs,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,biomass_wood,FALSE
+Room heater,Wood pellets,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,biomass_pellets,FALSE
+Room heater,Wood pellets,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,biomass_pellets,FALSE
+Room heater,Peak electric,Not applicable,Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,room_heater,notapplicable,electricity,FALSE
+Room heater,Off-peak electric,Not applicable,Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,room_heater,notapplicable,electricity,FALSE
+Room heater,Oil,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,oil,FALSE
+Room heater,Oil,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,oil,FALSE
+Room heater,House coal,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,house_coal,FALSE
+Room heater,House coal,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,house_coal,FALSE
+Room heater,Smokeless fuel,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,house_coal,FALSE
+Room heater,Smokeless fuel,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,house_coal,FALSE
+Room heater,Antracite nuts and grain,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,house_coal,FALSE
+Room heater,Antracite nuts and grain,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,house_coal,FALSE
+Room heater,Wood chips,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,biomass_woodchip,FALSE
+Room heater,Wood chips,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,biomass_woodchip,FALSE
+Room heater,Wood logs,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,biomass_wood,FALSE
+Room heater,Wood logs,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,biomass_wood,FALSE
+Room heater,Wood pellets,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,biomass_pellets,FALSE
+Room heater,Wood pellets,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,biomass_pellets,FALSE
+Room heater,Not applicable,Not applicable,Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,room_heater,notapplicable,electricity,FALSE
+Room heater (bb no rads),House coal,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,house_coal,FALSE
+Room heater (bb no rads),House coal,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,house_coal,FALSE
+Room heater (bb no rads),Smokeless fuel,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,house_coal,FALSE
+Room heater (bb no rads),Smokeless fuel,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,house_coal,FALSE
+Room heater (bb no rads),Antracite nuts and grain,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,house_coal,FALSE
+Room heater (bb no rads),Antracite nuts and grain,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,house_coal,FALSE
+Room heater (bb no rads),Dual fuel,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,house_coal,FALSE
+Room heater (bb no rads),Dual fuel,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,house_coal,FALSE
+Room heater (bb no rads),Wood chips,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,biomass_woodchip,FALSE
+Room heater (bb no rads),Wood chips,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,biomass_woodchip,FALSE
+Room heater (bb no rads),Wood logs,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,biomass_wood,FALSE
+Room heater (bb no rads),Wood logs,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,biomass_wood,FALSE
+Room heater (bb no rads),Wood pellets,Open fire,Room heater,Solid fuel room heaters Open fire in grate,C,32,3,0.5,631,rd,0,32,room_heater,chimney,biomass_pellets,FALSE
+Room heater (bb no rads),Wood pellets,Closed fire,Room heater,Closed room heater,OF,60,3,0.5,633,rd,0,60,room_heater,openflue,biomass_pellets,FALSE
+Room heater (bb no rads),Peak electric,Not applicable,Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,room_heater,notapplicable,electricity,FALSE
+Room heater (bb no rads),Off-peak electric,Not applicable,Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,room_heater,notapplicable,electricity,FALSE
+Room heater (bb no rads),Oil,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,oil,FALSE
+Room heater (bb no rads),Oil,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,oil,FALSE
+Room heater (bb no rads),House coal,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,house_coal,FALSE
+Room heater (bb no rads),House coal,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,house_coal,FALSE
+Room heater (bb no rads),Smokeless fuel,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,house_coal,FALSE
+Room heater (bb no rads),Smokeless fuel,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,house_coal,FALSE
+Room heater (bb no rads),Antracite nuts and grain,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,house_coal,FALSE
+Room heater (bb no rads),Antracite nuts and grain,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,house_coal,FALSE
+Room heater (bb no rads),Wood chips,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,biomass_woodchip,FALSE
+Room heater (bb no rads),Wood chips,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,biomass_woodchip,FALSE
+Room heater (bb no rads),Wood logs,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,biomass_wood,FALSE
+Room heater (bb no rads),Wood logs,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,biomass_wood,FALSE
+Room heater (bb no rads),Wood pellets,Range cooker (no oven),Room heater,Range cooker boiler (integral oven and boiler),,45,3,0.5,160,rd,0,45,room_heater,notapplicable,biomass_pellets,FALSE
+Room heater (bb no rads),Wood pellets,Range cooker (with oven),Room heater,Range cooker boiler (independent oven and boiler),,55,3,0.5,161,,0,55,room_heater,notapplicable,biomass_pellets,FALSE
+Room heater (bb no rads),Not applicable,Not applicable,Room heater,"Electric (direct acting) room heaters, Panel, convector or radiant heaters",,100,1,1,691,rd,0,100,room_heater,notapplicable,electricity,FALSE
