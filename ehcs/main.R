@@ -145,16 +145,6 @@ merge.all.sav.files <- function(path.to.ehcs){
                      all.x = TRUE,
                      by.x = "aacode", by.y = "Aacode")
 
-  ##toby quick fix to get income from fp (current set to NA for all entries, working out why)
-  #fp <- read.spss(file.path(path.to.ehcs,"fuel_poverty/fuel_poverty_dataset_2014_tc.sav"),to.data.frame = T)
-  #fp$aacode <- as.character(fp$aacode)
-  #fp$fpfullinc <- as.character(fp$fpfullinc)
-  #
-  #test <- merge(allEntries, 
-  #                    fp,
-  #                    all.x = TRUE,
-  #                    by = "aacode")
-  
   print("Dimensions sav file merged adding rooms summary from introoms.sav...")
    
   # Create room summary and merge with allEntries data.frame
