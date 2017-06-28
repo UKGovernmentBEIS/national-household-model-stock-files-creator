@@ -103,8 +103,7 @@ make.stock <- function(path.to.ehcs, path.to.output) {
   print("Addtional properties and logs csv created, making house storeys...")
   
   #' Just do stories on their own as they have a separate bit of code.
-  scale.storeys <- if (exists("option.ehs.storeys.scale")) option.ehs.storeys.scale
-                   else FALSE
+  scale.storeys <- if (exists("option.ehs.storeys.scale")) option.ehs.storeys.scale else FALSE
 
   generate.all.storeys(path.to.ehcs, file.path(path.to.output, "storeys.csv"), scale.storeys)
 
@@ -130,8 +129,9 @@ merge.all.sav.files <- function(path.to.ehcs){
        "derived/interview_13plus14_sl_protect.sav",
        "interview/rooms_sl_protect.sav", 
        "physical/elevate_sl_protect.sav", 
-       "fuel_poverty/fuel_poverty_dataset_2014_tc.sav",
-       "fuel_poverty/fuel_poverty_dataset_2014_supplementary_variables_tc_sl_protect.sav")))
+       #"fuel_poverty/fuel_poverty_dataset_2014_tc.sav",
+       #"fuel_poverty/fuel_poverty_dataset_2014_supplementary_variables_tc_sl_protect.sav",
+       "fuel_poverty/dataforukda_final_disclosure_control_revised_sl_protect.sav")))
   
   merged <- join(allEntries, 
                  toMerge,
@@ -145,6 +145,16 @@ merge.all.sav.files <- function(path.to.ehcs){
                      all.x = TRUE,
                      by.x = "aacode", by.y = "Aacode")
 
+  ##toby quick fix to get income from fp (current set to NA for all entries, working out why)
+  #fp <- read.spss(file.path(path.to.ehcs,"fuel_poverty/fuel_poverty_dataset_2014_tc.sav"),to.data.frame = T)
+  #fp$aacode <- as.character(fp$aacode)
+  #fp$fpfullinc <- as.character(fp$fpfullinc)
+  #
+  #test <- merge(allEntries, 
+  #                    fp,
+  #                    all.x = TRUE,
+  #                    by = "aacode")
+  
   print("Dimensions sav file merged adding rooms summary from introoms.sav...")
    
   # Create room summary and merge with allEntries data.frame
