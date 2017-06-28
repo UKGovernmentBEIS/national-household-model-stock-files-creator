@@ -2,7 +2,8 @@
 
 source("constants.R");
 source("match-and-normalize.R");
-source("functions-for-raw-wales-data-production.R");
+source("functions-for-raw-wales-data-production.R")
+source("functions-for-wales-income-uprating-2017versions.R");
 
 make.wales <- function(path.to.wales, output.dir) {
     print("Making Wales...")
