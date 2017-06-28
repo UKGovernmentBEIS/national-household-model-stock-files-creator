@@ -390,8 +390,8 @@ recode.new.variables <- function(liw.data) {
 income.uprating <- function(liw.data) {
   
   
-  income.cuts <- wtd.quantile(liw.data$fpfullinc, weights = liw.data$GR2, probs = c(0,0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0), normwt = TRUE, na.rm = FALSE)
-  income.decile <- cut(liw.data$fpfullinc, income.cuts, include.lowest = TRUE, labels = c(1:10))
+  income.cuts <- wtd.quantile(liw.data$fpfullinc, weights = liw.data$GR2, probs = c(0,0.11111, 0.22222, 0.33333, 0.44444, 0.55555, 0.66666, 0.77777, 0.88888, 1.0), normwt = TRUE, na.rm = FALSE)
+  income.decile <- cut(liw.data$fpfullinc, income.cuts, include.lowest = TRUE, labels = c(1:9))
   liw.data$ASHE_dcode <- as.numeric(income.decile)
   
   liw.data$hrpwk <- 0
@@ -401,12 +401,12 @@ income.uprating <- function(liw.data) {
   liw.data$hrpwk[liw.data$hrpsex == "Female" & liw.data$p5du == "Working part-time (less than 30 hours a week)" ] <- 4
   
   #lookup income changes
-  ashe.location <- file.path(getwd(),"data/LiW-2008/WalesIncomeChanges.csv")
-  ashe.data <- read.csv(ashe.location)
+  #ashe.location <- file.path(getwd(),"data/LiW-2008/WalesIncomeChanges.csv")
+  ashe.data <- produce.wales.income.uprating.lup()
   
   liw.data <- join(liw.data, ashe.data, by = c("hrpwk", "ASHE_dcode"))
   
-  liw.data$householdincomebeforetax <- liw.data$fpfullinc * liw.data$change.2008.2012
+  liw.data$householdincomebeforetax <- liw.data$fpfullinc * liw.data$change.2008.to.2014
   
   return(liw.data)
     
