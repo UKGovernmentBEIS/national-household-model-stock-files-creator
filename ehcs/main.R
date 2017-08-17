@@ -40,7 +40,7 @@ source("waterheating.R", chdir = T)
 source("ventilation.R", chdir = T)
 source("additional-properties.R", chdir = T)
 source("DTO-import-files.R", chdir = T)
-
+source("people.R", chdir = T)
 
 
 
@@ -77,6 +77,7 @@ make.stock <- function(path.to.ehcs, path.to.output) {
   IImportLogDTO <- make.eng_IImportLogDTO(allEntries)
   IStockImportMetadataDTO <- make.eng_IStockImportMetadataDTO(allEntries)
   metadata <- make.eng_metadata(allEntries)
+  peopleDTO <- people.make(peopleEntries)
 
   print("All DTO data-frame constructed, saving to CSV files...")
   
@@ -90,6 +91,7 @@ make.stock <- function(path.to.ehcs, path.to.output) {
   save.dto(spaceHeatingDTO, file.path(path.to.output, "space-heating.csv"))
   save.dto(waterHeatingDTO, file.path(path.to.output, "water-heating.csv"))
   save.dto(ventilationDTO, file.path(path.to.output, "ventilation.csv"))
+  save.dto(peopleDTO, file.path(path.to.output, "people.csv"))
 
   print("Core DTO's saved, saving additional properties and logs to csv...")
   
