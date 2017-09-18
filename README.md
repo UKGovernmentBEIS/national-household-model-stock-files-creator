@@ -1,5 +1,5 @@
 # Synopsis
-A series of R scripts that can be used to create structured zip file known as the 'Default Import Package' that can be imported by the [National Household Model](https://github.com/cse-bristol/national-household-model-standalone) as a housing stock. For more information on the content and structure of files within the 'Default Import Package' please see the Stock section within the [NHM documentation](https://github.com/cse-bristol/national-household-model-documentation/releases).
+A series of R scripts that can be used to create structured zip file known as the 'Default Import Package' that can be imported by the [National Household Model](https://github.com/UKGovernmentBEIS/national-household-model-standalone) as a housing stock. For more information on the content and structure of files within the 'Default Import Package' please see the Stock section within the [NHM documentation](https://github.com/UKGovernmentBEIS/national-household-model-documentation/releases).
 
 The source files from which the stock files are created cannot be distributed via this public repository, however details for how these files can be obtained can be found [here](accessing_housing_stock_data.md). Once downloaded they files should be added to their respective directories in the '/data folder' as follows:
 
