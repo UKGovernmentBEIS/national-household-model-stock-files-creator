@@ -1,9 +1,9 @@
 people.make <- function(peopleEntries){
     person.make <- function(people){
-        if(!is.na(people$AGE) & !is.na(people$Sex)){
+        if(!is.na(people$age) & !is.na(people$Sex)){
             data.table(
-                persono = people$PERSNO,
-                age = people$AGE,
+                persono = people$persno,
+                age = people$age,
                 sex = GET.SEX(people$Sex),
                 smoker = FALSE)
         }
@@ -47,5 +47,5 @@ ALLOCATE.SMOKERS <- function(people){
 GET.SEX <- function(Sex){
     as.factor(checked.revalue(
         Sex,c(
-                "female" = "FEMALE"
-               ,"male" = "MALE")))}
+                "Female" = "FEMALE"
+               ,"Male" = "MALE")))}

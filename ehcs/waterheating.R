@@ -149,8 +149,8 @@ make.waterheating <- function(allEntries, spaceHeatingDTO, path.to.ehcs){
 HAS_ELECTRIC_SHOWER <- function(allEntries){
     water.heating.details <- data.frame(
         aacode = allEntries$aacode
-       ,region = allEntries$GorEHS
-       ,dwellingcaseweight =  allEntries$aagpd1112
+       ,region = allEntries$gorEHS
+       ,dwellingcaseweight =  allEntries$aagpd1314
        ,has.multi.point = allEntries$Finwmppr == "Yes"
        ,has.single.point = allEntries$Finwsppr == "Yes"
        ,multi.point.is.electric = allEntries$Finwmpty == "Standard"

@@ -44,7 +44,7 @@ cases.make <- function(allEntries) {
                                allEntries$ndepchild)
   
   living.area.data <- cal.livingarea.data(allEntries$Finrooms,allEntries$Finlivwi,
-                                          allEntries$Finlivde,allEntries$FloorArea)
+                                          allEntries$Finlivde,allEntries$FloorArea.y)
   
   # Construct a data-frame for each house case
   cases <- data.frame(
@@ -55,7 +55,7 @@ cases.make <- function(allEntries) {
             buildyear = allEntries$fodconac,
             builtformtype = builtform.type(allEntries$dwtypenx),
             children = occupants$children,
-            dwellingcaseweight = allEntries$aagpd1112,
+            dwellingcaseweight = allEntries$aagpd1314,
             grndfloortype = groundfloor.construction.type(allEntries$kitchenHasSolidFloor, 
                                                 allEntries$livingRoomHasSolidFloor),
             frontplotdepth = plot.dimensions$frontplotDepth,
@@ -65,7 +65,7 @@ cases.make <- function(allEntries) {
                                                     plot.dimensions$frontplotArea),
             hasdraftlobby = (is.a.house(allEntries$dwtype8x) == FALSE),
             hasloft = has.loft(allEntries$Flitypes, allEntries$Flithick),
-            householdcaseweight = household.weight(allEntries$aagph1112),
+            householdcaseweight = household.weight(allEntries$aagph1314),
             livingareafaction = living.area.data$livingAreaFaction,
             morphologytype = morphology.type.lookup(allEntries$rumorph),
             numofhabitalrooms = living.area.data$numHabitalRooms,
@@ -74,7 +74,7 @@ cases.make <- function(allEntries) {
                                ifelse(allEntries$Fingasms == "Yes", TRUE, FALSE)),
             partlyownsroof = ifelse(is.na(allEntries$Owntype), FALSE, 
                                     owns.part.of.roof(allEntries$Owntype)),
-            regiontype = region.type(allEntries$GorEHS),
+            regiontype = region.type(allEntries$gorEHS),
             tenuretype = tenure.type(allEntries$tenure8x))
   
   print(paste("Cases DTO complete; number of records: ", nrow(cases)))
@@ -122,18 +122,18 @@ tenure.type <- function(tenure8x){
     tenure8x,c(
       "owner occupied - occupied" = "OwnerOccupied",
       "private rented - occupied" = "PrivateRented",
-      "local authority - occupied" = "LocalAuthority",
+      "local Authority - occupied" = "LocalAuthority",
       "RSL - occupied" = "HousingAssociation",
       "owner occupied - vacant" = "OwnerOccupied",
       "private rented - vacant" = "PrivateRented",
-      "local authority - vacant" = "LocalAuthority",
+      "local Authority - vacant" = "LocalAuthority",
       "RSL - vacant" = "HousingAssociation"
       )))
 }
 
-region.type <- function(GorEHS){
+region.type <- function(gorEHS){
   as.factor(checked.revalue(
-    GorEHS,c(
+    gorEHS,c(
       "North West" = "northwest",
       "North East" = "northeast",
       "Yorkshire and the Humber" = "yorkshireandhumber",
@@ -188,9 +188,9 @@ is.a.bedroom <- function(does.room.exist, room.function){
 #' 
 #' Returns the dwelling weight, if this is NA the function returns -9
 #'
-#'@param aagph1112 - DwellWeight_PairedCases
-household.weight <- function(aagph1112){
-  return (ifelse(is.na(aagph1112), -9, aagph1112))
+#'@param aagph1314 - DwellWeight_PairedCases
+household.weight <- function(aagph1314){
+  return (ifelse(is.na(aagph1314), -9, aagph1314))
 }
 
 
@@ -317,8 +317,9 @@ roof.look.up <- function(OWNTYPE){
       "leaseholder owning FH collectively" = TRUE,
       "leaseholder owning FH of whole bldg" = TRUE,
       "freeholder of flat - owning FH of flat only" = FALSE,
-      "commonholder (property built as CH)" = TRUE,
-      "commonholder (property converted to CH)" = TRUE)))
+   #   "commonholder (property built as CH)" = TRUE,
+    #  "commonholder (property converted to CH)" = TRUE
+   "commonholder" = TRUE)))
 }
   
 #' ## Groundfloor construction type
@@ -368,7 +369,9 @@ cal.livingarea.data <- function(numOfHabitalRooms, livingRoomWidth,
                           (calc_livingRoomWidth * calc_livingRoomDepth)/ totalFloorArea)
   
   data <- data.frame(
-    livingAreaFaction = calc_livingAreaFaction,
+    livingAreaFaction = 0, #calc_livingAreaFaction, # this is not deliberate, but instead a decision taken since
+    # there seems to be an error with the living area fraction calaculation and it won't run, sothis is a necessary step.
+    # it also aligns the stock better with BRE's pproach for LAF, but this isn't the reason I've done it here
     numHabitalRooms = ifelse(is.na(numOfHabitalRooms), 0, numOfHabitalRooms),
     numOfBedrooms = 0)
   

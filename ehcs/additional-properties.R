@@ -53,13 +53,27 @@ make.additionalproperties <- function(allEntries) {
                                     NRms2a = allEntries$NRms2a,
                                     NRms4 = allEntries$NRms4,
                                     NRms5 = allEntries$NRms5,
+									                  lenres2=allEntries$lenres2,		#CMT added asleresis onyl available for half the years. Eventualy we wat a proper fix which maps lenresb
+									                  AWEligible = NA, #allEntries$ECO_AW,	#CMT Needs tobe changedt map the various values to either TRUE or FALSE #TB - variable does not exist
                                     hhcompx = allEntries$hhcompx,
-                                    imd1010 = allEntries$Imd1010,
-                                    wallinsx = allEntries$wallinsx,
+                                    imd1010 = allEntries$imd1010,   #CMT - corrected spelling to EHS 2014 data for imd1010 variable in allEntries df - changed i to lower case
+                                    wallinsy = allEntries$wallinsy,  #CMT - replaced wallinsx with wallinsy, the equivalent variable in EHS2014
                                     Felroofp = allEntries$felroofp,
                                     CERTpriority = allEntries$CERTpriority,
+                                    FloorArea = allEntries$FloorArea.x, #CMT additional variable (from dimensions file)
+                                    FloorArea_Addnl_conservatory = allEntries$fincosiz,
+                                    GF_area = NA, #CMT adding in SHCS floor area values in (GF) TO MATCH SCOTLAND
+                                    f1st_area = NA, #CMT adding in SHCS floor area values in (1st) TO MATCH SCOTLAND
+                                    s2nd_area= NA, #CMT adding in SHCS floor area values in (2nd) TO MATCH SCOTLAND
+                                    t3rd_area = NA, #CMT adding in SHCS floor area values in (3rd+) TO MATCH SCOTLAND
+                                    RiR_area = NA, #CMT adding in SHCS floor area values in (R-I-R) TO MATCH SCOTLAND
+                                    Ext1_area = NA, #CMT adding in SHCS floor area values in (extension)  TO MATCH SCOTLAND
+                                    Ext2_area = NA, #CMT adding in SHCS floor area values in (extension 2)  TO MATCH SCOTLAND
                                     WFG_preApr11 = allEntries$WFG_preApr11,
-                                    sap09 = allEntries$sap09
+                                    FPBasicIncomeDef = allEntries$fpflgb,  #CMT additional variable
+                                    FPFullIncomeDef = allEntries$fpflgf,  #CMT additional variable
+                                    sap09 = NA,
+                                    sap12 = allEntries$sap12  #CMT - replaced by sap12 given sap09 variable nolonger exist in EHS 2014.
                                    )
   print(paste("additional-properties DTO complete; number of records: ", 
               nrow(additional.properties)))

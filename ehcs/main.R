@@ -58,12 +58,14 @@ make.stock <- function(path.to.ehcs, path.to.output) {
   
   #' The following are a special case, where there are more than one enty per aacode 
   #' and adding to all entries table is not necessary.
-  doorEntries <- read.spss.with.aacode(file.path(path.to.ehcs, "physical/doors.sav"))
-  peopleEntries <- read.spss.with.aacode(file.path(path.to.ehcs, "interview/people.sav"))
-  roomsEntries <- read.spss.with.aacode(file.path(path.to.ehcs, "physical/introoms.sav"))
+  doorEntries <- read.spss.with.aacode(file.path(path.to.ehcs, "physical/doors_sl_protect.sav"))
+  peopleEntries <- read.spss.with.aacode(file.path(path.to.ehcs, "interview/people_sl_protect.sav"))
+  roomsEntries <- read.spss.with.aacode(file.path(path.to.ehcs, "physical/introoms_sl_protect.sav"))
+  print("Done all door/room/people stuff")
   
   #' Construct DTO's
   casesDTO <- cases.make(allEntries)
+  print("made cases DTO")
   elevationsDTO <- elevations.make(allEntries, doorEntries)
   occupantsDTO <- occupants.make(allEntries, peopleEntries)
   roofsDTO <- roofs.make(allEntries)
@@ -81,6 +83,7 @@ make.stock <- function(path.to.ehcs, path.to.output) {
   
   #' Output DTO's
   save.dto(casesDTO, file.path(path.to.output, "cases.csv"))
+  print("made cases.csv")
   save.dto(elevationsDTO, file.path(path.to.output, "elevations.csv"))
   save.dto(occupantsDTO, file.path(path.to.output, "occupants.csv"))
   save.dto(roofsDTO, file.path(path.to.output, "roofs.csv"))
@@ -102,8 +105,7 @@ make.stock <- function(path.to.ehcs, path.to.output) {
   print("Addtional properties and logs csv created, making house storeys...")
   
   #' Just do stories on their own as they have a separate bit of code.
-  scale.storeys <- if (exists("option.ehs.storeys.scale")) option.ehs.storeys.scale
-                   else FALSE
+  scale.storeys <- if (exists("option.ehs.storeys.scale")) option.ehs.storeys.scale else FALSE
 
   generate.all.storeys(path.to.ehcs, file.path(path.to.output, "storeys.csv"), scale.storeys)
 
@@ -112,46 +114,51 @@ make.stock <- function(path.to.ehcs, path.to.output) {
 
 merge.all.sav.files <- function(path.to.ehcs){
   #' We use general.sav as our base-line of all cases available 
-  allEntries <- read.spss.with.aacode(file.path(path.to.ehcs, "derived/general_11plus12.sav"))
+  allEntries <- read.spss.with.aacode(file.path(path.to.ehcs, "derived/general_13plus14_sl_protect.sav"))
   
   #' Now merge all other spss files that should have just one entry for each house case
   toMerge <- Reduce(function(a, b){
     join(a,b, by = "aacode")
   },Map(function(name){
        read.spss.with.aacode(file.path(path.to.ehcs, name))
-  }, c("physical/firstimp_ps.sav",
-       "physical/shape.sav",
-       "physical/interior.sav",
-       "derived/physical_11plus12.sav",
-       "physical/around.sav",
-       "physical/services.sav",
-       "physical/flatdets.sav", 
-       "derived/interview_11plus12.sav",
-       "interview/rooms.sav", 
-       "physical/elevate.sav", 
-       "fuel_poverty/fuel_poverty_dataset_2012_tc.sav",
-       "fuel_poverty/fuel_poverty_dataset_2012_supplementary_variables_tc.sav")))
+  }, c("physical/firstimp_ps_sl_protect.sav",
+       "physical/shape_sl_protect.sav",
+       "physical/interior_sl_protect.sav",
+       "derived/physical_13plus14_sl_protect.sav",
+       "physical/around_sl_protect.sav",
+       "physical/services_sl_protect.sav",
+       "physical/flatdets_sl_protect.sav", 
+       "derived/interview_13plus14_sl_protect.sav",
+       "interview/rooms_sl_protect.sav", 
+       "physical/elevate_sl_protect.sav", 
+       #"fuel_poverty/fuel_poverty_dataset_2014_tc.sav",
+       #"fuel_poverty/fuel_poverty_dataset_2014_supplementary_variables_tc_sl_protect.sav",
+       "fuel_poverty/dataforukda_final_disclosure_control_revised_sl_protect.sav")))
   
   merged <- join(allEntries, 
                  toMerge,
                  by = "aacode")
 
-  print("First pass merge of sav files into wide data-frame completed, adding dimensions_11plus12.sav...")
+  print("First pass merge of sav files into wide data-frame completed, adding dimensions_13plus14_sl_protect.sav...")
   #' Dimensions sav file uses different case for Aacode column so we need to-do a 
   #' different merge   
   allEntries <- merge(merged, 
-                     read.spss.with.aacode.ucase(file.path(path.to.ehcs, "derived/detailed/dimensions_11plus12.sav")),
+                     read.spss.with.aacode.ucase(file.path(path.to.ehcs, "derived/detailed/dimensions_13plus14_sl_protect.sav")),
                      all.x = TRUE,
                      by.x = "aacode", by.y = "Aacode")
 
   print("Dimensions sav file merged adding rooms summary from introoms.sav...")
    
   # Create room summary and merge with allEntries data.frame
-  introoms <- read.spss.with.aacode(file.path(path.to.ehcs, "physical/introoms.sav"))
+  introoms <- read.spss.with.aacode(file.path(path.to.ehcs, "physical/introoms_sl_protect.sav"))
   case.room.summary <- summarise.rooms(introoms)
   allEntries <- merge(allEntries, case.room.summary, all.x = TRUE, by = "aacode")
 
   print("all entries created")
+  
+  write.csv(allEntries, file.path(getwd(), "allentries2014.csv"), row.names=FALSE, na ="NULL")
+  print("all entries PRINTED")
+  
   return(allEntries)
 }
 

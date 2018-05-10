@@ -82,13 +82,28 @@ make.additionalproperties <- function(shcs) {
             NRms2a = NA,
             NRms4 = NA,
             NRms5 = NA,
+			lenres2= NA,	#CMT addedtoenale GB stock to knit together
+			AWEligible = NA,	#CMT addedtoenale GB stock to knit together
             hhcompx = shcs.hhcompx,
             imd1010 = NA,
-            wallinsx = shcs.wallinsx,
+            wallinsy = shcs.wallinsx, #CMT - replaced wallinsx with wallinsy, the equivalent variable in EHS2014 (to match England)
             Felroofp = NA,
             CERTpriority = NA,
+            FloorArea = NA, #CMT additional variable (to match England)
+            FloorArea_Addnl_conservatory = NA,
+            GF_area = shcs$N1_A, #CMT adding in SHCS floor area values in (GF)
+            f1st_area = shcs$N2_A, #CMT adding in SHCS floor area values in (1st)
+            s2nd_area = shcs$N3_A, #CMT adding in SHCS floor area values in (2nd)
+            t3rd_area = shcs$N4_A, #CMT adding in SHCS floor area values in (3rd+)
+            RiR_area = shcs$N5_A, #CMT adding in SHCS floor area values in (R-I-R)
+            Ext1_area = shcs$N6_A, #CMT adding in SHCS floor area values in (extension)
+            Ext2_area = shcs$N7_A, #CMT adding in SHCS floor area values in (another extension)
             WFG_preApr11 = NA,
-            sap09 = shcs$SAP2009_BRE)
+            FPBasicIncomeDef = NA,  #CMT additional variable in England - added to match
+            FPFullIncomeDef = NA,  #CMT additional variable in England - added to match
+            sap09 = shcs$SAP2009_BRE,
+            sap12 = NA  #CMT - additional variable in England - added to match
+  )
 }
 
 #' Map M3 to findisty; determine what distribution method is used by the main heating
