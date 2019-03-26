@@ -1,4 +1,5 @@
-This repository is a development copy of the publically visible : [National Household Model Stock File Creator](https://github.com/UKGovernmentBEIS/national-household-model-stock-files-creator) repository.
+# Synopsis
+A series of R scripts that can be used to create structured zip file known as the 'Default Import Package' that can be imported by the [National Household Model](https://github.com/UKGovernmentBEIS/national-household-model-core-components) as a housing stock. For more information on the content and structure of files within the 'Default Import Package' please see the Stock section within the application manual.
 
 #Small edit: updated data series reference
 # Synopsis
